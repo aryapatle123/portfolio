@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Arya Patle — Developer Portfolio
 
-## Getting Started
+A personal developer portfolio built for **Arya Patle**, showcasing verified Machine Learning projects, NLP classification pipelines, and academic software engineering.
 
-First, run the development server:
+---
 
+## 🚀 Live Preview & Running Locally
+
+### 1. Prerequisites
+- **Node.js**: v18.0.0 or higher (v20+ recommended)
+- **npm**: v9+
+
+### 2. Start the Development Server
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### 3. Production Build & Verification
+To test the production build locally:
+```bash
+npm run build
+npm run start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Architecture & Clean Maintenance
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+All portfolio content is decoupled from layout components and centralized in a single configuration file:
 
-## Learn More
+```
+src/
+├── app/
+│   ├── globals.css         # Dark charcoal theme, hair-line borders & custom scrollbars
+│   ├── layout.tsx          # SEO metadata, OpenGraph tags, and Geist typography
+│   └── page.tsx            # Main page assembly
+├── components/
+│   ├── Navbar.tsx          # Sticky navigation with active-section tracking & mobile drawer
+│   ├── Hero.tsx            # Headline, quick metrics, and verified NLP code pipeline preview
+│   ├── NeuralCanvas.tsx    # Lightweight interactive canvas neural network visualizer
+│   ├── About.tsx           # Authentic background narrative & CS focus areas
+│   ├── Projects.tsx        # Project showcase with category filters
+│   ├── ProjectCard.tsx     # Rich cards with problem definitions, methodology, & accuracy metrics
+│   ├── InteractiveDemoModal.tsx # Live simulated client-side ML inference testing
+│   ├── Skills.tsx          # Categorized skill badges (Python, Scikit-Learn, NLP, Tools)
+│   ├── Experience.tsx      # CodSoft Machine Learning Internship timeline
+│   ├── Education.tsx       # B.Tech CSE details & core coursework
+│   ├── Entrepreneurship.tsx# Handcrafted craft business initiative
+│   ├── Contact.tsx         # Verified GitHub profile card & message preparer
+│   └── Footer.tsx          # Dynamic year, navigation links, and copyright
+└── data/
+    └── portfolioData.ts    # Centralized source of truth for all text, links, and projects
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ✏️ How to Update Your Information
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+You do not need to edit complex HTML/CSS to update your portfolio. Simply open:
+[`src/data/portfolioData.ts`](file:///c:/Users/hp/OneDrive/Desktop/Arya%20Portfolio/src/data/portfolioData.ts)
 
-## Deploy on Vercel
+You can update:
+- **Email, LinkedIn, or Resume links**: Add your links under `socials` and they will automatically appear across the site.
+- **Projects & Accuracy Benchmarks**: Add new projects or update existing ones under `projects`.
+- **College Name & Graduation Year**: When confirmed, update `education.details` and `education.note`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🌐 Deploying to Vercel
+
+1. Push this directory to your GitHub account:
+   ```bash
+   git add .
+   git commit -m "feat: complete developer portfolio for Arya Patle"
+   git branch -M main
+   git remote add origin https://github.com/aryapatle123/<your-portfolio-repo>.git
+   git push -u origin main
+   ```
+2. Go to [Vercel](https://vercel.com) and click **"Add New Project"**.
+3. Import your repository. Next.js App Router will be auto-detected with zero configuration needed.
+4. Click **Deploy**. Your portfolio will be live with high-speed global CDN delivery.
