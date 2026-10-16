@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { FolderGit2, Sparkles, Filter, ExternalLink, Code2 } from "lucide-react";
+import { FolderGit2, ExternalLink } from "lucide-react";
 import { PORTFOLIO_DATA, Project } from "@/data/portfolioData";
 import ProjectCard from "./ProjectCard";
 import InteractiveDemoModal from "./InteractiveDemoModal";
@@ -21,34 +21,34 @@ export default function Projects() {
   });
 
   return (
-    <section id="projects" className="py-24 relative border-t border-white/[0.06] bg-[#090A0F]">
+    <section id="projects" className="py-24 relative border-t border-[#1C3670]/40 bg-[#000133]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
             <div className="badge-pill mb-3">
-              <FolderGit2 className="w-3.5 h-3.5" />
+              <FolderGit2 className="w-3.5 h-3.5 text-[#FCF1D1]" />
               <span>Verified Portfolios & Experiments</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#FCF1D1]">
               Featured Projects
             </h2>
-            <p className="text-zinc-400 mt-2 text-sm sm:text-base max-w-xl">
+            <p className="text-[#FCF1D1]/65 mt-2 text-sm sm:text-base max-w-xl">
               Authentic machine learning projects with real evaluation metrics, Python implementations, and direct GitHub links.
             </p>
           </div>
 
           {/* Filter Pills */}
-          <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-xl bg-white/[0.02] border border-white/[0.06] self-start md:self-auto">
+          <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-xl bg-[#051540] border border-[#1C3670] self-start md:self-auto">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveFilter(cat)}
                 className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                   activeFilter === cat
-                    ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40"
-                    : "text-zinc-400 hover:text-zinc-200"
+                    ? "bg-[#1C3670] text-[#FCF1D1] font-semibold border border-[#FCF1D1]/30"
+                    : "text-[#FCF1D1]/60 hover:text-[#FCF1D1]"
                 }`}
               >
                 {cat}
@@ -58,17 +58,17 @@ export default function Projects() {
         </div>
 
         {/* Informative Methodology Banner */}
-        <div className="mb-12 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-emerald-950/30 via-slate-900/40 to-black/60 border border-emerald-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="mb-12 p-4 sm:p-5 rounded-2xl bg-[#051540] border border-[#1C3670] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-start gap-3">
-            <span className="p-2 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shrink-0">
-              <Sparkles className="w-4 h-4" />
-            </span>
+            <div className="p-2 rounded-xl bg-[#000133] border border-[#1C3670] text-[#FCF1D1] shrink-0 font-mono text-xs">
+              01
+            </div>
             <div>
-              <h3 className="text-sm font-semibold text-white">
+              <h3 className="text-sm font-semibold text-[#FCF1D1]">
                 Interactive Model Demonstrations Available
               </h3>
-              <p className="text-xs text-zinc-400">
-                Click <strong>"Test Simulation"</strong> on any project to try an interactive in-browser simulation of Arya's classification logic and feature extraction.
+              <p className="text-xs text-[#FCF1D1]/65">
+                Click <strong>"Test Simulation"</strong> on any project to try an interactive in-browser simulation of Arya&apos;s classification logic and feature extraction.
               </p>
             </div>
           </div>
@@ -77,7 +77,7 @@ export default function Projects() {
             href={PORTFOLIO_DATA.socials.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs font-mono text-emerald-300 hover:text-emerald-200 flex items-center gap-1.5 self-start sm:self-auto shrink-0"
+            className="text-xs font-mono text-[#FCF1D1] hover:text-[#FCF1D1]/80 flex items-center gap-1.5 self-start sm:self-auto shrink-0 bg-[#000133] px-3 py-1.5 rounded-lg border border-[#1C3670]"
           >
             <span>aryapatle123 / CODESOFT</span>
             <ExternalLink className="w-3.5 h-3.5" />

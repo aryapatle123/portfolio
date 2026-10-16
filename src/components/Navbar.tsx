@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X, ArrowUpRight, Terminal } from "lucide-react";
 import GithubIcon from "./GithubIcon";
+import LinkedinIcon from "./LinkedinIcon";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 
 interface NavItem {
@@ -56,43 +57,43 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-[#090A0F]/85 backdrop-blur-md border-b border-white/[0.08] shadow-lg shadow-black/40 py-3.5"
+          ? "bg-[#000133]/92 backdrop-blur-md border-b border-[#1C3670]/40 shadow-lg shadow-black/30 py-3.5"
           : "bg-transparent py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Brand Wordmark */}
+          
+          {/* Personal Brand */}
           <Link
-            href="#"
-            className="group flex items-center gap-2.5 focus:outline-none"
-            aria-label="Arya Patle - Home"
+            href="#home"
+            className="flex items-center gap-2.5 text-[#FCF1D1] group transition-opacity hover:opacity-90"
           >
-            <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 group-hover:border-emerald-400/60 transition-colors">
-              <Terminal className="w-4 h-4" />
+            <div className="w-8 h-8 rounded-lg bg-[#051540] border border-[#1C3670] flex items-center justify-center text-[#FCF1D1] group-hover:border-[#FCF1D1]/60 transition-colors">
+              <Terminal className="w-4 h-4 text-[#FCF1D1]" />
             </div>
             <div className="flex flex-col">
-              <span className="text-base font-semibold tracking-tight text-white group-hover:text-emerald-300 transition-colors">
+              <span className="font-semibold text-sm tracking-tight text-[#FCF1D1]">
                 {PORTFOLIO_DATA.personal.name}
               </span>
-              <span className="text-[11px] font-mono text-zinc-400 -mt-0.5 tracking-wider">
-                ML & Software
+              <span className="text-[10px] uppercase font-mono tracking-wider text-[#FCF1D1]/60">
+                Machine Learning & Python
               </span>
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1 bg-[#121620]/70 border border-white/[0.06] px-3 py-1.5 rounded-full backdrop-blur-md" aria-label="Main Navigation">
+          {/* Desktop Nav Items */}
+          <nav className="hidden md:flex items-center gap-1 bg-[#051540]/80 p-1 rounded-full border border-[#1C3670]/60 backdrop-blur-sm">
             {NAV_ITEMS.map((item) => {
               const isActive = activeSection === item.href.replace("#", "");
               return (
                 <a
                   key={item.href}
                   href={item.href}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-medium tracking-wide transition-all duration-200 ${
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all ${
                     isActive
-                      ? "bg-emerald-500/15 text-emerald-300 border border-emerald-500/30"
-                      : "text-zinc-300 hover:text-white hover:bg-white/[0.04]"
+                      ? "bg-[#1C3670] text-[#FCF1D1] font-semibold border border-[#FCF1D1]/20 shadow-sm"
+                      : "text-[#FCF1D1]/70 hover:text-[#FCF1D1] hover:bg-[#1C3670]/30"
                   }`}
                 >
                   {item.label}
@@ -101,88 +102,87 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Action Links */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* Verified Repository & Social Buttons */}
+          <div className="hidden sm:flex items-center gap-2.5">
+            <a
+              href={PORTFOLIO_DATA.socials.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-mono text-[#FCF1D1] bg-[#051540] hover:bg-[#071D57] border border-[#1C3670] hover:border-[#FCF1D1]/40 transition-all"
+              aria-label="LinkedIn Profile"
+            >
+              <LinkedinIcon className="w-3.5 h-3.5 text-[#FCF1D1]" />
+              <span>LinkedIn</span>
+            </a>
+
             <a
               href={PORTFOLIO_DATA.socials.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-medium text-zinc-300 bg-white/[0.03] border border-white/[0.08] hover:border-emerald-500/40 hover:text-white hover:bg-white/[0.06] transition-all"
-              aria-label="Arya Patle GitHub Profile (opens in new tab)"
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-mono text-[#FCF1D1] bg-[#051540] hover:bg-[#071D57] border border-[#1C3670] hover:border-[#FCF1D1]/40 transition-all"
+              aria-label="Verified GitHub Repository"
             >
-              <GithubIcon className="w-3.5 h-3.5 text-emerald-400" />
-              <span>GitHub</span>
-              <ArrowUpRight className="w-3 h-3 text-zinc-500" />
+              <GithubIcon className="w-3.5 h-3.5 text-[#FCF1D1]" />
+              <span>CODESOFT</span>
+              <ArrowUpRight className="w-3 h-3 text-[#FCF1D1]/60" />
             </a>
 
             <a
               href="#contact"
-              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-xs font-semibold text-black bg-emerald-400 hover:bg-emerald-300 shadow-md shadow-emerald-500/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold text-[#000133] bg-[#FCF1D1] hover:bg-[#F5E6BD] shadow-sm transition-all"
             >
-              Connect
+              Contact
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex md:hidden items-center gap-2">
-            <a
-              href={PORTFOLIO_DATA.socials.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-zinc-400 hover:text-white rounded-lg border border-white/[0.06]"
-              aria-label="GitHub"
-            >
-              <GithubIcon className="w-4 h-4 text-emerald-400" />
-            </a>
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-zinc-300 hover:text-white rounded-lg border border-white/[0.08] bg-white/[0.04] focus:outline-none"
-              aria-label="Toggle mobile navigation menu"
-              aria-expanded={mobileMenuOpen}
-            >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
-          </div>
+          {/* Mobile Hamburger Toggle */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 rounded-lg bg-[#051540] border border-[#1C3670] text-[#FCF1D1] hover:bg-[#1C3670]/40 transition-colors"
+            aria-label="Toggle navigation menu"
+            aria-expanded={mobileMenuOpen}
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+
         </div>
+
+        {/* Mobile Navigation Dropdown */}
+        {mobileMenuOpen && (
+          <div className="md:hidden mt-3 p-4 rounded-2xl bg-[#051540] border border-[#1C3670] shadow-xl space-y-2">
+            {NAV_ITEMS.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="block px-3 py-2 rounded-lg text-sm font-medium text-[#FCF1D1]/80 hover:text-[#FCF1D1] hover:bg-[#1C3670]/30 transition-colors"
+              >
+                {item.label}
+              </a>
+            ))}
+            <div className="pt-2 border-t border-[#1C3670]/40 flex flex-col gap-2">
+              <a
+                href={PORTFOLIO_DATA.socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 p-2.5 rounded-lg text-xs font-mono text-[#FCF1D1] bg-[#000133] border border-[#1C3670]"
+              >
+                <LinkedinIcon className="w-4 h-4 text-[#FCF1D1]" />
+                <span>LinkedIn Profile</span>
+              </a>
+              <a
+                href={PORTFOLIO_DATA.socials.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 p-2.5 rounded-lg text-xs font-mono text-[#FCF1D1] bg-[#000133] border border-[#1C3670]"
+              >
+                <GithubIcon className="w-4 h-4 text-[#FCF1D1]" />
+                <span>GitHub Repository</span>
+              </a>
+            </div>
+          </div>
+        )}
       </div>
-
-      {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className="md:hidden border-b border-white/[0.08] bg-[#090A0F]/95 backdrop-blur-xl px-4 pt-3 pb-6 space-y-2 mt-2">
-          {NAV_ITEMS.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-lg text-sm font-medium text-zinc-300 hover:text-white hover:bg-white/[0.05]"
-            >
-              {item.label}
-            </a>
-          ))}
-          <div className="pt-3 border-t border-white/[0.06] flex flex-col gap-2">
-            <a
-              href={PORTFOLIO_DATA.socials.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-between px-3 py-2.5 rounded-lg text-sm text-zinc-300 bg-white/[0.03] border border-white/[0.08]"
-            >
-              <span className="flex items-center gap-2">
-                <GithubIcon className="w-4 h-4 text-emerald-400" />
-                GitHub Repository
-              </span>
-              <ArrowUpRight className="w-4 h-4 text-zinc-500" />
-            </a>
-            <a
-              href="#contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block text-center py-2.5 px-3 rounded-lg text-sm font-medium text-black bg-emerald-400 hover:bg-emerald-300"
-            >
-              Connect with Arya
-            </a>
-          </div>
-        </div>
-      )}
     </header>
   );
 }

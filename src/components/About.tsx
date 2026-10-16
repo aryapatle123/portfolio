@@ -5,43 +5,43 @@ import { PORTFOLIO_DATA } from "@/data/portfolioData";
 export default function About() {
   const highlights = [
     {
-      icon: <Brain className="w-5 h-5 text-emerald-400" />,
+      icon: <Brain className="w-5 h-5 text-[#FCF1D1]" />,
       title: "Machine Learning & NLP",
       desc: "Text classification, TF-IDF vectorization, feature extraction, and algorithm tuning using Scikit-Learn."
     },
     {
-      icon: <ShieldAlert className="w-5 h-5 text-teal-400" />,
+      icon: <ShieldAlert className="w-5 h-5 text-[#FCF1D1]" />,
       title: "Fraud Detection & Analytics",
       desc: "Anomaly detection and binary classification tackling severe class imbalance in transaction logs."
     },
     {
-      icon: <Code2 className="w-5 h-5 text-lime-400" />,
+      icon: <Code2 className="w-5 h-5 text-[#FCF1D1]" />,
       title: "Python Software Development",
       desc: "Writing modular scripts, Jupyter data exploration, and Flask web backend prototypes for data analysis."
     },
     {
-      icon: <Database className="w-5 h-5 text-cyan-400" />,
+      icon: <Database className="w-5 h-5 text-[#FCF1D1]" />,
       title: "Core Computer Science",
       desc: "Coursework in Database Management Systems (DBMS), Operating Systems, and Compiler Design."
     }
   ];
 
   return (
-    <section id="about" className="py-24 relative border-t border-white/[0.06] bg-[#090A0F]">
+    <section id="about" className="py-24 relative border-t border-[#1C3670]/40 bg-[#000133]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
           <div>
             <div className="badge-pill mb-3">
-              <BookOpen className="w-3.5 h-3.5" />
+              <BookOpen className="w-3.5 h-3.5 text-[#FCF1D1]" />
               <span>Background & Philosophy</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#FCF1D1]">
               About Arya Patle
             </h2>
           </div>
-          <p className="text-zinc-400 max-w-md text-sm sm:text-base leading-relaxed">
+          <p className="text-[#FCF1D1]/65 max-w-md text-sm sm:text-base leading-relaxed">
             Hands-on machine learning, authentic academic foundations, and practical problem-solving.
           </p>
         </div>
@@ -51,24 +51,24 @@ export default function About() {
           
           {/* Main Story Column */}
           <div className="lg:col-span-7 editorial-card rounded-2xl p-7 sm:p-9 space-y-6">
-            <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight flex items-center gap-2">
-              <Cpu className="w-5 h-5 text-emerald-400" />
+            <h3 className="text-xl sm:text-2xl font-semibold text-[#FCF1D1] tracking-tight flex items-center gap-2">
+              <Cpu className="w-5 h-5 text-[#FCF1D1]" />
               <span>Bridging Theory with Practical Implementation</span>
             </h3>
 
-            <div className="space-y-4 text-zinc-300 leading-relaxed text-sm sm:text-base font-light">
+            <div className="space-y-4 text-[#FCF1D1]/75 leading-relaxed text-sm sm:text-base font-light">
               {PORTFOLIO_DATA.personal.bio.map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}
             </div>
 
             {/* Academic Status Callout */}
-            <div className="pt-4 border-t border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-              <div className="text-zinc-400">
-                <span className="text-zinc-500 font-mono">Current Status:</span>{" "}
-                <span className="text-white font-medium">{PORTFOLIO_DATA.education.degree}</span>
+            <div className="pt-4 border-t border-[#1C3670]/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+              <div className="text-[#FCF1D1]/65">
+                <span className="text-[#FCF1D1]/45 font-mono">Current Status:</span>{" "}
+                <span className="text-[#FCF1D1] font-medium">{PORTFOLIO_DATA.education.degree}</span>
               </div>
-              <div className="font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20 w-fit">
+              <div className="font-mono text-[#FCF1D1] bg-[#000133] px-3 py-1 rounded-full border border-[#1C3670] w-fit">
                 {PORTFOLIO_DATA.education.details}
               </div>
             </div>
@@ -79,17 +79,17 @@ export default function About() {
             {highlights.map((item, idx) => (
               <div
                 key={idx}
-                className="p-5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-emerald-500/30 hover:bg-white/[0.04] transition-all duration-200"
+                className="p-5 rounded-xl bg-[#051540] border border-[#1C3670] hover:border-[#FCF1D1]/40 transition-all duration-200"
               >
                 <div className="flex items-start gap-4">
-                  <div className="p-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08]">
+                  <div className="p-2.5 rounded-lg bg-[#000133] border border-[#1C3670]">
                     {item.icon}
                   </div>
                   <div>
-                    <h4 className="text-base font-semibold text-white mb-1">
+                    <h4 className="text-base font-semibold text-[#FCF1D1] mb-1">
                       {item.title}
                     </h4>
-                    <p className="text-xs text-zinc-400 leading-relaxed">
+                    <p className="text-xs text-[#FCF1D1]/65 leading-relaxed">
                       {item.desc}
                     </p>
                   </div>

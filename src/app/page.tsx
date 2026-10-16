@@ -11,7 +11,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#090A0F] text-[#F4F5F7] flex flex-col selection:bg-emerald-500 selection:text-black">
+    <div className="min-h-screen bg-[#000133] text-[#FCF1D1] flex flex-col selection:bg-[#1C3670] selection:text-[#FCF1D1]">
       <Navbar />
       <main className="flex-1">
         <Hero />

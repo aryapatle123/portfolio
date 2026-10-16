@@ -22,7 +22,6 @@ export default function NeuralCanvas() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Respect user's reduced motion preference
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     let animationFrameId: number;
@@ -37,19 +36,18 @@ export default function NeuralCanvas() {
 
     window.addEventListener("resize", handleResize);
 
-    // Node count adapted to screen resolution
-    const nodeCount = Math.min(Math.floor((width * height) / 18000), 55);
+    const nodeCount = Math.min(Math.floor((width * height) / 18000), 50);
     const nodes: Node[] = [];
 
     for (let i = 0; i < nodeCount; i++) {
-      const isHighlight = Math.random() < 0.2;
+      const isHighlight = Math.random() < 0.25;
       nodes.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: prefersReducedMotion ? 0 : (Math.random() - 0.5) * 0.45,
-        vy: prefersReducedMotion ? 0 : (Math.random() - 0.5) * 0.45,
-        radius: isHighlight ? 2.8 : 1.8,
-        baseRadius: isHighlight ? 2.8 : 1.8,
+        vx: prefersReducedMotion ? 0 : (Math.random() - 0.5) * 0.35,
+        vy: prefersReducedMotion ? 0 : (Math.random() - 0.5) * 0.35,
+        radius: isHighlight ? 2.2 : 1.5,
+        baseRadius: isHighlight ? 2.2 : 1.5,
         highlight: isHighlight,
       });
     }
@@ -75,7 +73,7 @@ export default function NeuralCanvas() {
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Render neural edges
+      // Render architectural neural edges using palette #1C3670 (Cobalt)
       const maxDistance = 140;
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
@@ -84,32 +82,32 @@ export default function NeuralCanvas() {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < maxDistance) {
-            const alpha = (1 - dist / maxDistance) * 0.22;
+            const alpha = (1 - dist / maxDistance) * 0.35;
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(nodes[j].x, nodes[j].y);
             ctx.strokeStyle = nodes[i].highlight || nodes[j].highlight
-              ? `rgba(52, 211, 153, ${alpha * 1.5})`
-              : `rgba(160, 175, 200, ${alpha * 0.6})`;
+              ? `rgba(28, 54, 112, ${alpha * 1.5})`
+              : `rgba(28, 54, 112, ${alpha * 0.8})`;
             ctx.lineWidth = 0.75;
             ctx.stroke();
           }
         }
       }
 
-      // Render connections to cursor
+      // Cursor connection in #FCF1D1 (Warm Cream)
       if (mouse.active) {
         for (let i = 0; i < nodes.length; i++) {
           const dx = mouse.x - nodes[i].x;
           const dy = mouse.y - nodes[i].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 160) {
-            const alpha = (1 - dist / 160) * 0.35;
+          if (dist < 150) {
+            const alpha = (1 - dist / 150) * 0.4;
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(mouse.x, mouse.y);
-            ctx.strokeStyle = `rgba(52, 211, 153, ${alpha})`;
-            ctx.lineWidth = 1;
+            ctx.strokeStyle = `rgba(252, 241, 209, ${alpha})`;
+            ctx.lineWidth = 0.9;
             ctx.stroke();
           }
         }
@@ -126,15 +124,14 @@ export default function NeuralCanvas() {
           if (n.x < 0 || n.x > width) n.vx *= -1;
           if (n.y < 0 || n.y > height) n.vy *= -1;
 
-          // Mouse gentle repulsion / interaction
           if (mouse.active) {
             const dx = n.x - mouse.x;
             const dy = n.y - mouse.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
             if (dist < 90 && dist > 0) {
               const force = (90 - dist) / 90;
-              n.x += (dx / dist) * force * 1.2;
-              n.y += (dy / dist) * force * 1.2;
+              n.x += (dx / dist) * force * 1.0;
+              n.y += (dy / dist) * force * 1.0;
             }
           }
         }
@@ -142,15 +139,11 @@ export default function NeuralCanvas() {
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
         if (n.highlight) {
-          ctx.fillStyle = "#34d399";
-          ctx.shadowColor = "rgba(52, 211, 153, 0.8)";
-          ctx.shadowBlur = 8;
+          ctx.fillStyle = "#FCF1D1";
         } else {
-          ctx.fillStyle = "rgba(220, 230, 245, 0.5)";
-          ctx.shadowBlur = 0;
+          ctx.fillStyle = "rgba(28, 54, 112, 0.75)";
         }
         ctx.fill();
-        ctx.shadowBlur = 0;
       }
 
       animationFrameId = requestAnimationFrame(render);
@@ -169,7 +162,7 @@ export default function NeuralCanvas() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-none opacity-60 z-0"
+      className="absolute inset-0 w-full h-full pointer-events-none opacity-40 z-0"
       aria-hidden="true"
     />
   );

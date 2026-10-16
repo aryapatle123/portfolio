@@ -13,13 +13,13 @@ const geistMono = Geist_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#090A0F",
+  themeColor: "#000133",
   width: "device-width",
   initialScale: 1,
 };
 
 export const metadata: Metadata = {
-  title: "Arya Patle — Machine Learning & Software Development",
+  title: "Arya Patle | Machine Learning & Software Development",
   description:
     "Personal developer portfolio of Arya Patle. Computer Science and Engineering student specializing in Machine Learning, Natural Language Processing, text classification, and Python software development.",
   keywords: [
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://github.com/aryapatle123/CODESOFT",
-    title: "Arya Patle — Machine Learning & Software Development",
+    title: "Arya Patle | Machine Learning & Software Development",
     description:
       "Computer Science student building intelligent software solutions with Python, Machine Learning, and Natural Language Processing.",
     siteName: "Arya Patle Portfolio",
@@ -60,7 +60,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} dark scroll-smooth`}>
-      <body className="min-h-screen bg-[#090A0F] text-[#F4F5F7] antialiased selection:bg-emerald-500 selection:text-black">
+      <body className="min-h-screen bg-[#000133] text-[#FCF1D1] antialiased selection:bg-[#1C3670] selection:text-[#FCF1D1]">
         {children}
       </body>
     </html>

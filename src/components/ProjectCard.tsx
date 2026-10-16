@@ -1,6 +1,6 @@
 "use client";
 
-import { Play, ArrowUpRight, CheckCircle2, ShieldCheck, Film, MessageSquare, Layers, Cpu } from "lucide-react";
+import { Play, ArrowUpRight, ShieldCheck, Film, MessageSquare, Cpu } from "lucide-react";
 import GithubIcon from "./GithubIcon";
 import { Project } from "@/data/portfolioData";
 
@@ -14,13 +14,13 @@ export default function ProjectCard({ project, onOpenDemo, index }: Props) {
   const getIcon = () => {
     switch (project.interactiveDemoType) {
       case "sms":
-        return <MessageSquare className="w-5 h-5 text-emerald-400" />;
+        return <MessageSquare className="w-5 h-5 text-[#FCF1D1]" />;
       case "fraud":
-        return <ShieldCheck className="w-5 h-5 text-teal-400" />;
+        return <ShieldCheck className="w-5 h-5 text-[#FCF1D1]" />;
       case "genre":
-        return <Film className="w-5 h-5 text-lime-400" />;
+        return <Film className="w-5 h-5 text-[#FCF1D1]" />;
       default:
-        return <Cpu className="w-5 h-5 text-cyan-400" />;
+        return <Cpu className="w-5 h-5 text-[#FCF1D1]" />;
     }
   };
 
@@ -36,14 +36,14 @@ export default function ProjectCard({ project, onOpenDemo, index }: Props) {
       <div>
         <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
           <div className="flex items-center gap-2">
-            <span className="p-2 rounded-lg bg-white/[0.05] border border-white/[0.08]">
+            <span className="p-2 rounded-lg bg-[#000133] border border-[#1C3670]">
               {getIcon()}
             </span>
             <div>
-              <span className="text-[11px] font-mono uppercase tracking-widest text-emerald-400 block">
+              <span className="text-[11px] font-mono uppercase tracking-widest text-[#FCF1D1] block">
                 {project.category}
               </span>
-              <span className="text-xs text-zinc-500 font-mono">
+              <span className="text-xs text-[#FCF1D1]/45 font-mono">
                 Project #{String(index + 1).padStart(2, "0")}
               </span>
             </div>
@@ -55,24 +55,24 @@ export default function ProjectCard({ project, onOpenDemo, index }: Props) {
         </div>
 
         {/* Project Title */}
-        <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mb-3">
+        <h3 className="text-xl sm:text-2xl font-bold text-[#FCF1D1] tracking-tight mb-3">
           {project.title}
         </h3>
 
         {/* Short Summary */}
-        <p className="text-sm text-zinc-300 leading-relaxed mb-4">
+        <p className="text-sm text-[#FCF1D1]/75 leading-relaxed mb-4">
           {project.shortDescription}
         </p>
 
         {/* Problem & Approach */}
-        <div className="space-y-2 mb-5 p-3.5 rounded-xl bg-black/40 border border-white/[0.04]">
+        <div className="space-y-2 mb-5 p-3.5 rounded-xl bg-[#000133] border border-[#1C3670]">
           <div className="text-xs">
-            <span className="font-semibold text-zinc-300">Problem: </span>
-            <span className="text-zinc-400">{project.problemSolved}</span>
+            <span className="font-semibold text-[#FCF1D1]">Problem: </span>
+            <span className="text-[#FCF1D1]/65">{project.problemSolved}</span>
           </div>
           <div className="text-xs">
-            <span className="font-semibold text-zinc-300">Methodology: </span>
-            <span className="text-zinc-400 font-mono text-[11px]">{project.methodology}</span>
+            <span className="font-semibold text-[#FCF1D1]">Methodology: </span>
+            <span className="text-[#FCF1D1]/65 font-mono text-[11px]">{project.methodology}</span>
           </div>
         </div>
 
@@ -82,15 +82,15 @@ export default function ProjectCard({ project, onOpenDemo, index }: Props) {
             {project.metrics.map((metric, i) => (
               <div
                 key={i}
-                className="p-2.5 rounded-lg bg-emerald-950/20 border border-emerald-500/20"
+                className="p-2.5 rounded-lg bg-[#000133] border border-[#1C3670]"
               >
-                <div className="text-lg font-bold font-mono text-emerald-300">
+                <div className="text-lg font-bold font-mono text-[#FCF1D1]">
                   {metric.value}
                 </div>
-                <div className="text-[10px] uppercase font-mono text-zinc-400">
+                <div className="text-[10px] uppercase font-mono text-[#FCF1D1]/70">
                   {metric.label}
                 </div>
-                <div className="text-[9px] text-zinc-500 truncate" title={metric.note}>
+                <div className="text-[9px] text-[#FCF1D1]/45 truncate" title={metric.note}>
                   {metric.note}
                 </div>
               </div>
@@ -103,7 +103,7 @@ export default function ProjectCard({ project, onOpenDemo, index }: Props) {
           {project.technologies.map((tech) => (
             <span
               key={tech}
-              className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.06] text-zinc-300"
+              className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-[#000133] border border-[#1C3670] text-[#FCF1D1]/80"
             >
               {tech}
             </span>
@@ -112,13 +112,13 @@ export default function ProjectCard({ project, onOpenDemo, index }: Props) {
       </div>
 
       {/* Action Footer */}
-      <div className="pt-4 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-3">
+      <div className="pt-4 border-t border-[#1C3670]/40 flex flex-wrap items-center justify-between gap-3">
         {project.interactiveDemoType && (
           <button
             onClick={() => onOpenDemo(project)}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold text-black bg-emerald-400 hover:bg-emerald-300 shadow-md shadow-emerald-500/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold text-[#000133] bg-[#FCF1D1] hover:bg-[#F5E6BD] shadow-md transition-all active:scale-[0.98]"
           >
-            <Play className="w-3.5 h-3.5 fill-black" />
+            <Play className="w-3.5 h-3.5 fill-[#000133]" />
             <span>Test Simulation</span>
           </button>
         )}
@@ -128,16 +128,16 @@ export default function ProjectCard({ project, onOpenDemo, index }: Props) {
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs font-mono text-zinc-300 hover:text-white bg-white/[0.03] hover:bg-white/[0.08] px-3 py-2 rounded-lg border border-white/[0.08] transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-mono text-[#FCF1D1] hover:text-[#FCF1D1]/80 bg-[#000133] hover:bg-[#051540] px-3 py-2 rounded-lg border border-[#1C3670] transition-colors"
           >
-            <GithubIcon className="w-3.5 h-3.5 text-emerald-400" />
+            <GithubIcon className="w-3.5 h-3.5 text-[#FCF1D1]" />
             <span>View Source Notebook</span>
-            <ArrowUpRight className="w-3 h-3 text-zinc-500" />
+            <ArrowUpRight className="w-3 h-3 text-[#FCF1D1]/60" />
           </a>
         )}
 
         {!project.githubUrl && (
-          <span className="text-[11px] font-mono text-zinc-500">
+          <span className="text-[11px] font-mono text-[#FCF1D1]/50">
             Academic Concept Specification
           </span>
         )}

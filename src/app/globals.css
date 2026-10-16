@@ -1,16 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --background: #090a0f;
-  --surface: #0f1118;
-  --surface-raised: #151922;
-  --foreground: #f4f5f7;
-  --muted: #9aa2b2;
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-focus: rgba(52, 211, 153, 0.4);
-  --accent: #10b981;
-  --accent-light: #34d399;
-  --accent-glow: rgba(16, 185, 129, 0.15);
+  /* Exact 4-Color Editorial Palette:
+     - Band 1: #000133 (Deep Midnight Indigo / Navy)
+     - Band 2: #051540 (Dark Navy Slate)
+     - Band 3: #1C3670 (Muted Cobalt / Steel Blue)
+     - Band 4: #FCF1D1 (Warm Cream / Soft Linen Ivory)
+  */
+  --bg-base: #000133;
+  --bg-surface: #051540;
+  --bg-surface-elevated: #071D57;
+  --border-cobalt: #1C3670;
+  --border-subtle: rgba(28, 54, 112, 0.5);
+  --border-cream: rgba(252, 241, 209, 0.25);
+  --text-cream: #FCF1D1;
+  --text-cream-muted: rgba(252, 241, 209, 0.75);
+  --text-cream-dim: rgba(252, 241, 209, 0.48);
+
+  --background: #000133;
+  --foreground: #FCF1D1;
 }
 
 * {
@@ -23,64 +31,62 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
-  selection-background-color: #10b981;
-  selection-color: #000000;
 }
 
 ::selection {
-  background: #10b981;
-  color: #05140d;
+  background: #1C3670;
+  color: #FCF1D1;
 }
 
-/* Subtle background architectural grid */
+/* Subtle architectural grid pattern in midnight tones */
 .tech-grid-bg {
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 48px 48px;
+    linear-gradient(to right, rgba(28, 54, 112, 0.18) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(28, 54, 112, 0.18) 1px, transparent 1px);
+  background-size: 44px 44px;
 }
 
-/* Glass panel styling with fine hairline borders */
+/* Editorial Solid Cards - Non "Vibe Coded", grounded, authoritative */
 .editorial-card {
-  background: linear-gradient(180deg, rgba(19, 23, 34, 0.75) 0%, rgba(13, 16, 24, 0.85) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background-color: #051540;
+  border: 1px solid rgba(28, 54, 112, 0.55);
 }
 
 .editorial-card-highlight {
-  background: linear-gradient(180deg, rgba(20, 27, 38, 0.85) 0%, rgba(12, 16, 25, 0.95) 100%);
-  border: 1px solid rgba(52, 211, 153, 0.2);
-  box-shadow: 0 20px 50px -15px rgba(16, 185, 129, 0.08);
+  background-color: #051540;
+  border: 1px solid #1C3670;
 }
 
-/* Refined custom scrollbar */
+.editorial-card-highlight:hover {
+  border-color: rgba(252, 241, 209, 0.4);
+}
+
+/* Custom scrollbar in cobalt and navy */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #090a0f;
+  background: #000133;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 9999px;
+  background: #1C3670;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(52, 211, 153, 0.4);
+  background: rgba(252, 241, 209, 0.6);
 }
 
 /* Focus styles for keyboard accessibility */
 a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
-  outline: 2px solid #34d399;
-  outline-offset: 3px;
+  outline: 2px solid #FCF1D1;
+  outline-offset: 2px;
 }
 
-/* Glow pill */
+/* Clean, restrained Pill Badge */
 .badge-pill {
   display: inline-flex;
   align-items: center;
@@ -88,10 +94,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   padding: 0.25rem 0.75rem;
   border-radius: 9999px;
   font-size: 0.75rem;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  font-weight: 500;
-  border: 1px solid rgba(52, 211, 153, 0.25);
-  background: rgba(16, 185, 129, 0.06);
-  color: #34d399;
+  font-weight: 600;
+  border: 1px solid #1C3670;
+  background-color: rgba(28, 54, 112, 0.35);
+  color: #FCF1D1;
 }

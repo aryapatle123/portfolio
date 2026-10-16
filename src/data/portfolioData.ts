@@ -60,7 +60,7 @@ export const PORTFOLIO_DATA = {
 
   education: {
     degree: "B.Tech in Computer Science and Engineering (CSE)",
-    details: "Currently in Fourth Semester (Section B)",
+    details: "Currently in 5th Semester (Section B)",
     coreFocus: [
       "Machine Learning & Data Science",
       "Database Management Systems (DBMS)",
@@ -74,8 +74,9 @@ export const PORTFOLIO_DATA = {
   socials: {
     github: "https://github.com/aryapatle123/CODESOFT",
     githubProfile: "https://github.com/aryapatle123",
-    email: "", // User will update when ready
-    linkedin: "", // User will update when ready
+    email: "aryapatle2704@gmail.com",
+    linkedin: "https://www.linkedin.com/in/arya-patle-273823320",
+    instagram: "https://www.instagram.com/bloomii_15?exln=dTR4eXYyeHNxczQw",
     resumeUrl: "" // User will update when ready
   },
 
@@ -83,7 +84,7 @@ export const PORTFOLIO_DATA = {
     { label: "Core Focus", value: "ML & NLP" },
     { label: "Primary Language", value: "Python" },
     { label: "Verified Models", value: "3+ Deployed" },
-    { label: "Academic Standing", value: "Semester IV (CSE)" }
+    { label: "Academic Standing", value: "Semester V (CSE)" }
   ],
 
   projects: [
@@ -252,15 +253,21 @@ export const PORTFOLIO_DATA = {
   ] as ExperienceItem[],
 
   entrepreneurship: {
-    title: "Handcrafted Pipe-Cleaner Craft Venture",
-    role: "Founder & Creator",
-    type: "Independent Initiative",
+    brand: "bloomi_15",
+    title: "bloomi_15 | Handcrafted Pipe-Cleaner Floristry & Gifts",
+    role: "Founder & Creative Artisan",
+    type: "Creative Startup & E-Commerce",
+    handle: "@bloomii_15",
+    instagramUrl: "https://www.instagram.com/bloomii_15?exln=dTR4eXYyeHNxczQw",
     description:
-      "Alongside my rigorous B.Tech computer science studies, I manage a small handcrafted pipe-cleaner craft venture. This personal initiative exercises creative product design, meticulous attention to detail, time management, inventory planning, and direct client fulfillment.",
+      "Founded and run by myself alongside my B.Tech Computer Science studies, bloomi_15 is my creative small startup specializing in handmade pipe-cleaner flowers, custom bouquets, decorative arrangements, and bespoke artisanal gifts. I handcraft every piece, manage custom orders, market creations across my personal network and Instagram, and coordinate direct client deliveries, bridging tactile artistic creativity with real-world entrepreneurial discipline.",
     highlights: [
-      "Balancing academic CSE responsibilities with hands-on craft production and order scheduling.",
-      "Developing self-reliance, creative problem-solving, and attention to tactile quality.",
-      "Cultivating real-world communication skills through direct client requests and custom orders."
+      "Handcrafted Floristry & Custom Design: Creating intricate pipe-cleaner flowers, everlasting bouquets, and personalized gift pieces.",
+      "End-to-End Solo Operations: Managing material sourcing, custom client inquiries, packaging, pricing, and direct order fulfillment.",
+      "Balancing Engineering & Startup Execution: Cultivating self-reliance, client communication, and disciplined time management concurrently with B.Tech CSE coursework."
     ]
   }
 };
+
+
+export const portfolioData = PORTFOLIO_DATA;
