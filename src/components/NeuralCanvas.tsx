@@ -63,51 +63,50 @@ export default function NeuralCanvas() {
 
     const handleMouseLeave = () => {
       mouse.active = false;
-      mouse.x = -1000;
-      mouse.y = -1000;
     };
 
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseleave", handleMouseLeave);
 
+    const connectionDistance = 140;
+
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Render architectural neural edges using palette #1C3670 (Cobalt)
-      const maxDistance = 140;
+      // Draw connections in delicate periwinkle (#ABC5F5)
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
           const dx = nodes[i].x - nodes[j].x;
           const dy = nodes[i].y - nodes[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < maxDistance) {
-            const alpha = (1 - dist / maxDistance) * 0.35;
+          if (dist < connectionDistance) {
+            const alpha = (1 - dist / connectionDistance) * 0.45;
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(nodes[j].x, nodes[j].y);
             ctx.strokeStyle = nodes[i].highlight || nodes[j].highlight
-              ? `rgba(28, 54, 112, ${alpha * 1.5})`
-              : `rgba(28, 54, 112, ${alpha * 0.8})`;
-            ctx.lineWidth = 0.75;
+              ? `rgba(141, 170, 255, ${alpha * 1.5})`
+              : `rgba(171, 197, 245, ${alpha * 0.9})`;
+            ctx.lineWidth = 0.85;
             ctx.stroke();
           }
         }
       }
 
-      // Cursor connection in #FCF1D1 (Warm Cream)
+      // Cursor connection in vibrant periwinkle (#8DAAFF)
       if (mouse.active) {
         for (let i = 0; i < nodes.length; i++) {
           const dx = mouse.x - nodes[i].x;
           const dy = mouse.y - nodes[i].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 150) {
-            const alpha = (1 - dist / 150) * 0.4;
+            const alpha = (1 - dist / 150) * 0.5;
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(mouse.x, mouse.y);
-            ctx.strokeStyle = `rgba(252, 241, 209, ${alpha})`;
-            ctx.lineWidth = 0.9;
+            ctx.strokeStyle = `rgba(141, 170, 255, ${alpha})`;
+            ctx.lineWidth = 1;
             ctx.stroke();
           }
         }
@@ -139,9 +138,9 @@ export default function NeuralCanvas() {
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
         if (n.highlight) {
-          ctx.fillStyle = "#FCF1D1";
+          ctx.fillStyle = "#8DAAFF";
         } else {
-          ctx.fillStyle = "rgba(28, 54, 112, 0.75)";
+          ctx.fillStyle = "rgba(171, 197, 245, 0.9)";
         }
         ctx.fill();
       }
@@ -152,17 +151,17 @@ export default function NeuralCanvas() {
     render();
 
     return () => {
+      cancelAnimationFrame(animationFrameId);
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseleave", handleMouseLeave);
-      cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-none opacity-40 z-0"
+      className="absolute inset-0 pointer-events-none z-0 opacity-75"
       aria-hidden="true"
     />
   );

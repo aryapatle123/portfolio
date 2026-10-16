@@ -38,7 +38,6 @@ export default function Contact() {
     const emailBody = `Sender Name: ${formState.name}\nSender Email: ${formState.email}\nSubject: ${formState.subject}\n\nMessage:\n${formState.message}`;
 
     try {
-      // Send through dedicated Gmail SMTP Next.js API route
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: {
@@ -87,22 +86,22 @@ export default function Contact() {
   )}`;
 
   return (
-    <section id="contact" className="py-24 relative border-t border-[#1C3670]/40 bg-[#000133]">
+    <section id="contact" className="py-24 relative border-t border-[#ABC5F5]/60 bg-[#FFF8DF]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header with Sparsh Accent */}
+        {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
             <div className="flex items-center space-x-3 mb-2">
-              <span className="w-2 h-6 bg-[#FCF1D1]" />
-              <span className="font-mono text-xs tracking-widest text-[#FCF1D1] uppercase font-bold">
+              <span className="w-2 h-6 bg-[#8DAAFF]" />
+              <span className="font-mono text-xs tracking-widest text-[#2E4069] uppercase font-bold">
                 RADIO // DIRECT COMM
               </span>
-              <span className="font-mono text-xs text-[#FCF1D1]/60 uppercase">
+              <span className="font-mono text-xs text-[#5C729E] uppercase font-semibold">
                 SMTP INBOX DISPATCH
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#FCF1D1]">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#0A1329]">
               Get in Touch
             </h2>
           </div>
@@ -111,29 +110,29 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start max-w-5xl mx-auto">
           
           {/* Left Column: Direct Profiles */}
-          <div className="lg:col-span-5 bg-[#051540] border border-[#1C3670] telemetry-bracket rounded-2xl p-7 space-y-4">
+          <div className="lg:col-span-5 bg-[#FFF2C7] border border-[#ABC5F5] telemetry-bracket rounded-2xl p-7 space-y-4 shadow-md">
             <div>
-              <span className="text-[10px] font-mono uppercase text-[#FCF1D1]/60 tracking-wider block">
+              <span className="text-[10px] font-mono uppercase text-[#5C729E] font-bold tracking-wider block">
                 CHANNELS // VERIFIED
               </span>
-              <h3 className="text-lg font-bold text-[#FCF1D1] mt-0.5">
+              <h3 className="text-lg font-bold text-[#0A1329] mt-0.5">
                 Direct Contact Channels
               </h3>
             </div>
 
             <div className="space-y-2.5 pt-2 font-mono">
               {/* Email Card */}
-              <div className="p-3.5 rounded-xl bg-[#000133] border border-[#1C3670] space-y-2">
+              <div className="p-3.5 rounded-xl bg-[#FFF8DF] border border-[#ABC5F5] space-y-2 shadow-xs">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
-                    <div className="p-2 rounded-lg bg-[#051540] text-[#FCF1D1] border border-[#1C3670]">
-                      <Mail className="w-4 h-4" />
+                    <div className="p-2 rounded-lg bg-[#FFF2C7] text-[#0A1329] border border-[#ABC5F5]">
+                      <Mail className="w-4 h-4 text-[#8DAAFF]" />
                     </div>
                     <div>
-                      <span className="text-[10px] font-mono uppercase text-[#FCF1D1]/60 block">GMAIL INBOX</span>
+                      <span className="text-[10px] font-mono uppercase text-[#5C729E] font-bold block">GMAIL INBOX</span>
                       <a
                         href={`mailto:${recipientEmail}`}
-                        className="text-xs font-semibold text-[#FCF1D1] hover:underline"
+                        className="text-xs font-bold text-[#0A1329] hover:underline"
                       >
                         {recipientEmail}
                       </a>
@@ -144,7 +143,7 @@ export default function Contact() {
                 <div className="flex items-center gap-2 pt-1">
                   <a
                     href={`mailto:${recipientEmail}`}
-                    className="flex-1 text-center py-1.5 px-3 rounded-lg bg-[#051540] hover:bg-[#071D57] border border-[#1C3670] text-xs font-mono text-[#FCF1D1] transition-colors"
+                    className="flex-1 text-center py-1.5 px-3 rounded-lg bg-[#FFF2C7] hover:bg-white border border-[#ABC5F5] text-xs font-mono text-[#0A1329] font-semibold transition-colors shadow-xs"
                   >
                     Open Mail App
                   </a>
@@ -152,18 +151,18 @@ export default function Contact() {
                     href={gmailComposeUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="py-1.5 px-3 rounded-lg bg-[#051540] hover:bg-[#071D57] border border-[#1C3670] text-xs font-mono text-[#FCF1D1] transition-colors inline-flex items-center gap-1"
+                    className="py-1.5 px-3 rounded-lg bg-[#FFF2C7] hover:bg-white border border-[#ABC5F5] text-xs font-mono text-[#0A1329] font-semibold transition-colors inline-flex items-center gap-1 shadow-xs"
                     title="Open in Gmail Web"
                   >
                     <span>Gmail</span>
-                    <ExternalLink className="w-3 h-3 text-[#FCF1D1]/70" />
+                    <ExternalLink className="w-3 h-3 text-[#5C729E]" />
                   </a>
                   <button
                     onClick={handleCopyEmail}
-                    className="py-1.5 px-3 rounded-lg bg-[#051540] hover:bg-[#071D57] border border-[#1C3670] text-xs font-mono text-[#FCF1D1] transition-colors inline-flex items-center gap-1.5"
+                    className="py-1.5 px-3 rounded-lg bg-[#FFF2C7] hover:bg-white border border-[#ABC5F5] text-xs font-mono text-[#0A1329] font-semibold transition-colors inline-flex items-center gap-1.5 shadow-xs"
                     title="Copy Email"
                   >
-                    {copiedEmail ? <Check className="w-3.5 h-3.5 text-[#FCF1D1]" /> : <Copy className="w-3.5 h-3.5" />}
+                    {copiedEmail ? <Check className="w-3.5 h-3.5 text-[#8DAAFF]" /> : <Copy className="w-3.5 h-3.5 text-[#0A1329]" />}
                     <span>{copiedEmail ? "Copied" : "Copy"}</span>
                   </button>
                 </div>
@@ -174,22 +173,22 @@ export default function Contact() {
                 href={PORTFOLIO_DATA.socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-between p-3.5 rounded-xl bg-[#000133] border border-[#1C3670] hover:border-[#FCF1D1]/50 transition-all"
+                className="group flex items-center justify-between p-3.5 rounded-xl bg-[#FFF8DF] border border-[#ABC5F5] hover:border-[#8DAAFF] transition-all shadow-xs"
               >
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-[#051540] text-[#FCF1D1] border border-[#1C3670]">
-                    <LinkedinIcon className="w-4 h-4" />
+                  <div className="p-2 rounded-lg bg-[#FFF2C7] text-[#0A1329] border border-[#ABC5F5]">
+                    <LinkedinIcon className="w-4 h-4 text-[#8DAAFF]" />
                   </div>
                   <div>
-                    <span className="text-xs font-semibold text-[#FCF1D1] block">
+                    <span className="text-xs font-bold text-[#0A1329] block">
                       LINKEDIN PROFILE
                     </span>
-                    <span className="text-[11px] font-mono text-[#FCF1D1]/60">
+                    <span className="text-[11px] font-mono text-[#5C729E] font-medium">
                       arya-patle-273823320
                     </span>
                   </div>
                 </div>
-                <ArrowUpRight className="w-4 h-4 text-[#FCF1D1]/60 group-hover:text-[#FCF1D1] transition-colors" />
+                <ArrowUpRight className="w-4 h-4 text-[#5C729E] group-hover:text-[#0A1329] transition-colors" />
               </a>
 
               {/* GitHub Card */}
@@ -197,22 +196,22 @@ export default function Contact() {
                 href={PORTFOLIO_DATA.socials.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-between p-3.5 rounded-xl bg-[#000133] border border-[#1C3670] hover:border-[#FCF1D1]/50 transition-all"
+                className="group flex items-center justify-between p-3.5 rounded-xl bg-[#FFF8DF] border border-[#ABC5F5] hover:border-[#8DAAFF] transition-all shadow-xs"
               >
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-[#051540] text-[#FCF1D1] border border-[#1C3670]">
-                    <GithubIcon className="w-4 h-4" />
+                  <div className="p-2 rounded-lg bg-[#FFF2C7] text-[#0A1329] border border-[#ABC5F5]">
+                    <GithubIcon className="w-4 h-4 text-[#0A1329]" />
                   </div>
                   <div>
-                    <span className="text-xs font-semibold text-[#FCF1D1] block">
+                    <span className="text-xs font-bold text-[#0A1329] block">
                       GITHUB REPOSITORIES
                     </span>
-                    <span className="text-[11px] font-mono text-[#FCF1D1]/60">
+                    <span className="text-[11px] font-mono text-[#5C729E] font-medium">
                       github.com/aryapatle123
                     </span>
                   </div>
                 </div>
-                <ArrowUpRight className="w-4 h-4 text-[#FCF1D1]/60 group-hover:text-[#FCF1D1] transition-colors" />
+                <ArrowUpRight className="w-4 h-4 text-[#5C729E] group-hover:text-[#0A1329] transition-colors" />
               </a>
 
               {/* Instagram Card for bloomi_15 */}
@@ -221,38 +220,38 @@ export default function Contact() {
                   href={PORTFOLIO_DATA.socials.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-between p-3.5 rounded-xl bg-[#000133] border border-[#1C3670] hover:border-[#FCF1D1]/50 transition-all"
+                  className="group flex items-center justify-between p-3.5 rounded-xl bg-[#FFF8DF] border border-[#ABC5F5] hover:border-[#8DAAFF] transition-all shadow-xs"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg bg-[#051540] text-[#FCF1D1] border border-[#1C3670]">
-                      <InstagramIcon className="w-4 h-4" />
+                    <div className="p-2 rounded-lg bg-[#FFF2C7] text-[#0A1329] border border-[#ABC5F5]">
+                      <InstagramIcon className="w-4 h-4 text-[#8DAAFF]" />
                     </div>
                     <div>
-                      <span className="text-xs font-semibold text-[#FCF1D1] block">
+                      <span className="text-xs font-bold text-[#0A1329] block">
                         BLOOMI_15 (INSTAGRAM)
                       </span>
-                      <span className="text-[11px] font-mono text-[#FCF1D1]/60">
+                      <span className="text-[11px] font-mono text-[#5C729E] font-medium">
                         instagram.com/bloomii_15
                       </span>
                     </div>
                   </div>
-                  <ArrowUpRight className="w-4 h-4 text-[#FCF1D1]/60 group-hover:text-[#FCF1D1] transition-colors" />
+                  <ArrowUpRight className="w-4 h-4 text-[#5C729E] group-hover:text-[#0A1329] transition-colors" />
                 </a>
               )}
             </div>
           </div>
 
           {/* Right Column: Inquiry Message Form */}
-          <div className="lg:col-span-7 bg-[#051540] border border-[#1C3670] telemetry-bracket rounded-2xl p-7 sm:p-8">
-            <div className="flex items-center justify-between gap-2 mb-4 border-b border-[#1C3670]/60 pb-3">
+          <div className="lg:col-span-7 bg-[#FFF2C7] border border-[#ABC5F5] telemetry-bracket rounded-2xl p-7 sm:p-8 shadow-md">
+            <div className="flex items-center justify-between gap-2 mb-4 border-b border-[#ABC5F5]/70 pb-3">
               <div className="flex items-center gap-2">
-                <MessageSquare className="w-4 h-4 text-[#FCF1D1]" />
-                <h3 className="text-base font-bold font-mono text-[#FCF1D1] uppercase">
+                <MessageSquare className="w-4 h-4 text-[#8DAAFF]" />
+                <h3 className="text-base font-bold font-mono text-[#0A1329] uppercase">
                   Direct Message Dispatch
                 </h3>
               </div>
-              <span className="text-[10px] font-mono text-[#FCF1D1]/70 bg-[#000133] px-2.5 py-1 rounded border border-[#1C3670] flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#FCF1D1] animate-pulse" />
+              <span className="text-[10px] font-mono text-[#2E4069] bg-[#FFF8DF] px-2.5 py-1 rounded border border-[#ABC5F5] flex items-center gap-1.5 font-bold shadow-xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#8DAAFF] animate-pulse" />
                 <span>SMTP ACTIVE</span>
               </span>
             </div>
@@ -260,7 +259,7 @@ export default function Contact() {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="text-xs font-mono text-[#FCF1D1]/80 block mb-1 uppercase tracking-wider">
+                  <label className="text-xs font-mono text-[#2E4069] font-bold block mb-1 uppercase tracking-wider">
                     Your Name *
                   </label>
                   <input
@@ -269,12 +268,12 @@ export default function Contact() {
                     value={formState.name}
                     onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                     placeholder="e.g. Collaborator or Recruiter"
-                    className="w-full rounded-xl bg-[#000133] border border-[#1C3670] p-3 text-sm text-[#FCF1D1] focus:border-[#FCF1D1] focus:outline-none transition-colors"
+                    className="w-full rounded-xl bg-[#FFF8DF] border border-[#ABC5F5] p-3 text-sm text-[#0A1329] focus:border-[#8DAAFF] focus:outline-none transition-colors shadow-xs"
                   />
                 </div>
 
                 <div>
-                  <label className="text-xs font-mono text-[#FCF1D1]/80 block mb-1 uppercase tracking-wider">
+                  <label className="text-xs font-mono text-[#2E4069] font-bold block mb-1 uppercase tracking-wider">
                     Your Email *
                   </label>
                   <input
@@ -283,13 +282,13 @@ export default function Contact() {
                     value={formState.email}
                     onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                     placeholder="yourname@domain.com"
-                    className="w-full rounded-xl bg-[#000133] border border-[#1C3670] p-3 text-sm text-[#FCF1D1] focus:border-[#FCF1D1] focus:outline-none transition-colors"
+                    className="w-full rounded-xl bg-[#FFF8DF] border border-[#ABC5F5] p-3 text-sm text-[#0A1329] focus:border-[#8DAAFF] focus:outline-none transition-colors shadow-xs"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="text-xs font-mono text-[#FCF1D1]/80 block mb-1 uppercase tracking-wider">
+                <label className="text-xs font-mono text-[#2E4069] font-bold block mb-1 uppercase tracking-wider">
                   Subject
                 </label>
                 <input
@@ -298,12 +297,12 @@ export default function Contact() {
                   value={formState.subject}
                   onChange={(e) => setFormState({ ...formState, subject: e.target.value })}
                   placeholder="Machine Learning, Internship, or Project inquiry"
-                  className="w-full rounded-xl bg-[#000133] border border-[#1C3670] p-3 text-sm text-[#FCF1D1] focus:border-[#FCF1D1] focus:outline-none transition-colors"
+                  className="w-full rounded-xl bg-[#FFF8DF] border border-[#ABC5F5] p-3 text-sm text-[#0A1329] focus:border-[#8DAAFF] focus:outline-none transition-colors shadow-xs"
                 />
               </div>
 
               <div>
-                <label className="text-xs font-mono text-[#FCF1D1]/80 block mb-1 uppercase tracking-wider">
+                <label className="text-xs font-mono text-[#2E4069] font-bold block mb-1 uppercase tracking-wider">
                   Message *
                 </label>
                 <textarea
@@ -312,50 +311,50 @@ export default function Contact() {
                   value={formState.message}
                   onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                   placeholder="Write your note or question here..."
-                  className="w-full rounded-xl bg-[#000133] border border-[#1C3670] p-3 text-sm text-[#FCF1D1] focus:border-[#FCF1D1] focus:outline-none resize-none transition-colors"
+                  className="w-full rounded-xl bg-[#FFF8DF] border border-[#ABC5F5] p-3 text-sm text-[#0A1329] focus:border-[#8DAAFF] focus:outline-none resize-none transition-colors shadow-xs"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full inline-flex items-center justify-center gap-2 py-3 px-6 rounded-xl text-xs font-mono uppercase tracking-wider font-bold text-[#000133] bg-[#FCF1D1] hover:bg-[#F5E6BD] shadow-md transition-all active:scale-[0.99] disabled:opacity-75 disabled:cursor-not-allowed"
+                className="w-full inline-flex items-center justify-center gap-2 py-3 px-6 rounded-xl text-xs font-mono uppercase tracking-wider font-bold text-[#0A1329] bg-[#8DAAFF] hover:bg-[#789BFF] shadow-md transition-all active:scale-[0.99] disabled:opacity-75 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>
-                    <Loader2 className="w-4 h-4 animate-spin text-[#000133]" />
+                    <Loader2 className="w-4 h-4 animate-spin text-[#0A1329]" />
                     <span>Sending via Gmail SMTP...</span>
                   </>
                 ) : isSubmitted ? (
                   <>
-                    <Check className="w-4 h-4 text-[#000133]" />
+                    <Check className="w-4 h-4 text-[#0A1329]" />
                     <span>Dispatched to {recipientEmail}</span>
                   </>
                 ) : (
                   <>
-                    <Send className="w-4 h-4 text-[#000133]" />
+                    <Send className="w-4 h-4 text-[#0A1329]" />
                     <span>Send Message via Mail Service</span>
                   </>
                 )}
               </button>
 
               {statusMessage && (
-                <div className="p-3 rounded-xl bg-[#000133] border border-[#1C3670] text-xs text-[#FCF1D1] flex items-center gap-2 font-mono">
-                  <Sparkles className="w-4 h-4 text-[#FCF1D1] shrink-0" />
-                  <span>{statusMessage}</span>
+                <div className="p-3 rounded-xl bg-[#FFF8DF] border border-[#ABC5F5] text-xs text-[#0A1329] flex items-center gap-2 font-mono shadow-xs">
+                  <Sparkles className="w-4 h-4 text-[#8DAAFF] shrink-0" />
+                  <span className="font-medium">{statusMessage}</span>
                 </div>
               )}
 
-              <div className="flex items-center justify-between text-[11px] text-[#FCF1D1]/55 pt-1 font-mono">
+              <div className="flex items-center justify-between text-[11px] text-[#5C729E] pt-1 font-mono">
                 <span>Direct delivery to aryapatle2704@gmail.com</span>
                 <a
                   href={gmailComposeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#FCF1D1]/75 hover:text-[#FCF1D1] underline inline-flex items-center gap-1"
+                  className="text-[#0A1329] hover:underline inline-flex items-center gap-1 font-semibold"
                 >
                   <span>Compose in Gmail Web</span>
-                  <ExternalLink className="w-3 h-3" />
+                  <ExternalLink className="w-3 h-3 text-[#5C729E]" />
                 </a>
               </div>
             </form>

@@ -2,9 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import GithubIcon from "./GithubIcon";
-import LinkedinIcon from "./LinkedinIcon";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 
 interface NavItem {
@@ -58,36 +57,36 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-[#000133]/95 backdrop-blur-md border-b border-[#1C3670]/60 shadow-xl shadow-black/40 py-3.5"
+          ? "bg-[#FFF8DF]/95 backdrop-blur-md border-b border-[#ABC5F5]/60 shadow-sm py-3.5"
           : "bg-transparent py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
-          {/* Sparsh-inspired Architectural Dev Brand */}
+          {/* Architectural Dev Brand */}
           <Link
             href="#home"
             className="flex items-center space-x-3 group focus:outline-none"
           >
-            <div className="w-2.5 h-7 bg-[#FCF1D1] transition-transform duration-200 group-hover:scale-y-110" />
+            <div className="w-2.5 h-7 bg-[#8DAAFF] transition-transform duration-200 group-hover:scale-y-110" />
             <div>
-              <span className="font-mono text-[10px] tracking-widest text-[#FCF1D1]/60 font-bold block uppercase">
+              <span className="font-mono text-[10px] tracking-widest text-[#5C729E] font-bold block uppercase">
                 AP // DEV CONTROL
               </span>
-              <span className="font-mono text-sm tracking-tight text-[#FCF1D1] font-semibold block">
+              <span className="font-mono text-sm tracking-tight text-[#0A1329] font-bold block">
                 ARYA PATLE
               </span>
             </div>
-            <div className="hidden md:flex items-center space-x-1.5 ml-3 pl-3 border-l border-[#1C3670]">
-              <span className="w-2 h-2 rounded-full bg-[#FCF1D1] animate-pulse inline-block" />
-              <span className="font-mono text-[10px] tracking-wider text-[#FCF1D1]/60 uppercase">
+            <div className="hidden md:flex items-center space-x-1.5 ml-3 pl-3 border-l border-[#ABC5F5]">
+              <span className="w-2 h-2 rounded-full bg-[#8DAAFF] animate-pulse inline-block" />
+              <span className="font-mono text-[10px] tracking-wider text-[#5C729E] uppercase font-semibold">
                 SYS: 5TH SEM
               </span>
             </div>
           </Link>
 
-          {/* Desktop Nav Items in Monospace Uppercase */}
+          {/* Desktop Nav Items */}
           <nav className="hidden lg:flex items-center space-x-1 font-mono text-xs tracking-wider">
             {NAV_ITEMS.map((item) => {
               const isActive = activeSection === item.href.replace("#", "");
@@ -97,8 +96,8 @@ export default function Navbar() {
                   href={item.href}
                   className={`px-3 py-1.5 transition-colors duration-150 border-b-2 ${
                     isActive
-                      ? "border-[#FCF1D1] text-[#FCF1D1] font-bold"
-                      : "border-transparent text-[#FCF1D1]/70 hover:text-[#FCF1D1] hover:border-[#1C3670]"
+                      ? "border-[#8DAAFF] text-[#0A1329] font-bold"
+                      : "border-transparent text-[#2E4069] hover:text-[#0A1329] hover:border-[#ABC5F5]"
                   }`}
                 >
                   <span>{item.label}</span>
@@ -113,18 +112,18 @@ export default function Navbar() {
               href={PORTFOLIO_DATA.socials.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-xs tracking-wider uppercase px-3 py-1.5 border border-[#1C3670] text-[#FCF1D1]/80 hover:text-[#FCF1D1] hover:border-[#FCF1D1]/60 transition-colors flex items-center gap-1.5 bg-[#051540]"
+              className="font-mono text-xs tracking-wider uppercase px-3 py-1.5 border border-[#ABC5F5] text-[#0A1329] hover:border-[#8DAAFF] transition-colors flex items-center gap-1.5 bg-[#FFF2C7]"
             >
-              <GithubIcon className="w-3.5 h-3.5 text-[#FCF1D1]" />
+              <GithubIcon className="w-3.5 h-3.5 text-[#0A1329]" />
               <span>GITHUB</span>
             </a>
 
             <a
               href="#contact"
-              className="font-mono text-xs tracking-wider uppercase px-4 py-1.5 bg-[#FCF1D1] text-[#000133] font-bold hover:bg-[#F5E6BD] transition-colors flex items-center space-x-1.5 shadow-sm"
+              className="font-mono text-xs tracking-wider uppercase px-4 py-1.5 bg-[#8DAAFF] text-[#0A1329] font-bold hover:bg-[#789BFF] transition-colors flex items-center space-x-1.5 shadow-sm"
             >
               <span>CONTACT</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#000133] animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0A1329] animate-pulse" />
             </a>
           </div>
 
@@ -132,7 +131,7 @@ export default function Navbar() {
           <div className="flex lg:hidden items-center gap-2">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-[#FCF1D1] border border-[#1C3670] bg-[#051540] hover:border-[#FCF1D1]/60 transition-colors"
+              className="p-2 text-[#0A1329] border border-[#ABC5F5] bg-[#FFF2C7] hover:border-[#8DAAFF] transition-colors rounded-lg"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -143,13 +142,13 @@ export default function Navbar() {
 
         {/* Mobile menu dropdown */}
         {mobileMenuOpen && (
-          <div className="lg:hidden mt-3 p-4 rounded-xl bg-[#051540] border border-[#1C3670] space-y-2 font-mono text-xs">
+          <div className="lg:hidden mt-3 p-4 rounded-xl bg-[#FFF2C7] border border-[#ABC5F5] shadow-lg space-y-2 font-mono text-xs">
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 text-[#FCF1D1] hover:bg-[#000133] rounded transition-colors"
+                className="block px-3 py-2 text-[#0A1329] hover:bg-[#FFF8DF] rounded transition-colors"
               >
                 {item.label}
               </a>

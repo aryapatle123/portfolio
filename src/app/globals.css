@@ -1,24 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  /* Exact 4-Color Editorial Palette:
-     - Band 1: #000133 (Deep Midnight Indigo / Navy)
-     - Band 2: #051540 (Dark Navy Slate)
-     - Band 3: #1C3670 (Muted Cobalt / Steel Blue)
-     - Band 4: #FCF1D1 (Warm Cream / Soft Linen Ivory)
+  /* Exact 4-Color Swatch Palette:
+     - Band 1: #FFF2C7 (Warm Butter Cream)
+     - Band 2: #FFF8DF (Light Ivory Linen / Page Base)
+     - Band 3: #ABC5F5 (Soft Powder Periwinkle / Borders & Subtles)
+     - Band 4: #8DAAFF (Vibrant Cornflower Periwinkle / Primary Accents)
+     - Contrast Navy: #0A1329 (Deep Midnight Slate for High-Contrast Readable Typography)
   */
-  --bg-base: #000133;
-  --bg-surface: #051540;
-  --bg-surface-elevated: #071D57;
-  --border-cobalt: #1C3670;
-  --border-subtle: rgba(28, 54, 112, 0.5);
-  --border-cream: rgba(252, 241, 209, 0.25);
-  --text-cream: #FCF1D1;
-  --text-cream-muted: rgba(252, 241, 209, 0.75);
-  --text-cream-dim: rgba(252, 241, 209, 0.48);
+  --bg-base: #FFF8DF;
+  --bg-surface: #FFF2C7;
+  --bg-surface-elevated: #FFFFFF;
+  --border-periwinkle: #ABC5F5;
+  --accent-primary: #8DAAFF;
+  --text-primary: #0A1329;
+  --text-muted: #2E4069;
+  --text-dim: #5C729E;
 
-  --background: #000133;
-  --foreground: #FCF1D1;
+  --background: #FFF8DF;
+  --foreground: #0A1329;
 }
 
 * {
@@ -27,62 +27,62 @@
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: #FFF8DF;
+  color: #0A1329;
   font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
 }
 
 ::selection {
-  background: #1C3670;
-  color: #FCF1D1;
+  background: #ABC5F5;
+  color: #0A1329;
 }
 
-/* Subtle architectural grid pattern in midnight tones */
+/* Subtle architectural grid pattern in soft periwinkle tones */
 .tech-grid-bg {
   background-image: 
-    linear-gradient(to right, rgba(28, 54, 112, 0.18) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(28, 54, 112, 0.18) 1px, transparent 1px);
+    linear-gradient(to right, rgba(171, 197, 245, 0.35) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(171, 197, 245, 0.35) 1px, transparent 1px);
   background-size: 44px 44px;
 }
 
-/* Editorial Solid Cards - Non "Vibe Coded", grounded, authoritative */
+/* Editorial Solid Cards in warm butter cream with periwinkle borders */
 .editorial-card {
-  background-color: #051540;
-  border: 1px solid rgba(28, 54, 112, 0.55);
+  background-color: #FFF2C7;
+  border: 1px solid #ABC5F5;
 }
 
 .editorial-card-highlight {
-  background-color: #051540;
-  border: 1px solid #1C3670;
+  background-color: #FFF2C7;
+  border: 1px solid #8DAAFF;
 }
 
 .editorial-card-highlight:hover {
-  border-color: rgba(252, 241, 209, 0.4);
+  border-color: #8DAAFF;
 }
 
-/* Custom scrollbar in cobalt and navy */
+/* Custom scrollbar in periwinkle and ivory */
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #000133;
+  background: #FFF8DF;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1C3670;
+  background: #ABC5F5;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(252, 241, 209, 0.6);
+  background: #8DAAFF;
 }
 
 /* Focus styles for keyboard accessibility */
 a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
-  outline: 2px solid #FCF1D1;
+  outline: 2px solid #8DAAFF;
   outline-offset: 2px;
 }
 
@@ -97,12 +97,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   letter-spacing: 0.05em;
   text-transform: uppercase;
   font-weight: 600;
-  border: 1px solid #1C3670;
-  background-color: rgba(28, 54, 112, 0.35);
-  color: #FCF1D1;
+  border: 1px solid #ABC5F5;
+  background-color: rgba(171, 197, 245, 0.3);
+  color: #0A1329;
 }
 
-/* Telemetry Bracket Styling (Inspired by Systems Engineering Telemetry) */
+/* Telemetry Bracket Styling in Vibrant Periwinkle (#8DAAFF) */
 .telemetry-bracket {
   position: relative;
 }
@@ -114,8 +114,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   left: -1px;
   width: 7px;
   height: 7px;
-  border-top: 2px solid #FCF1D1;
-  border-left: 2px solid #FCF1D1;
+  border-top: 2px solid #8DAAFF;
+  border-left: 2px solid #8DAAFF;
   pointer-events: none;
 }
 
@@ -126,7 +126,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   right: -1px;
   width: 7px;
   height: 7px;
-  border-bottom: 2px solid #FCF1D1;
-  border-right: 2px solid #FCF1D1;
+  border-bottom: 2px solid #8DAAFF;
+  border-right: 2px solid #8DAAFF;
   pointer-events: none;
 }

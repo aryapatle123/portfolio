@@ -13,31 +13,31 @@ export default function InteractiveDemoModal({ project, onClose }: Props) {
   if (!project) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#000133]/85 backdrop-blur-md animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A1329]/60 backdrop-blur-md animate-in fade-in duration-200">
       <div
-        className="editorial-card rounded-2xl w-full max-w-2xl border border-[#1C3670] shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
+        className="editorial-card rounded-2xl w-full max-w-2xl border border-[#ABC5F5] shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-title"
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-5 border-b border-[#1C3670]/40 bg-[#000133]">
+        <div className="flex items-center justify-between p-5 border-b border-[#ABC5F5]/40 bg-[#FFF2C7]">
           <div className="flex items-center gap-2.5">
-            <span className="p-1.5 rounded-lg bg-[#051540] text-[#FCF1D1] border border-[#1C3670]">
+            <span className="p-1.5 rounded-lg bg-[#FFF8DF] text-[#0A1329] border border-[#ABC5F5]">
               <Terminal className="w-4 h-4" />
             </span>
             <div>
-              <h3 id="modal-title" className="text-base font-semibold text-[#FCF1D1]">
+              <h3 id="modal-title" className="text-base font-semibold text-[#0A1329]">
                 Interactive Simulation: {project.title}
               </h3>
-              <p className="text-xs text-[#FCF1D1]/60 font-mono">
+              <p className="text-xs text-[#0A1329]/60 font-mono">
                 Model logic simulation inspired by Arya&apos;s project code
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-[#FCF1D1]/60 hover:text-[#FCF1D1] hover:bg-[#1C3670]/30 transition-colors"
+            className="p-1.5 rounded-lg text-[#0A1329]/60 hover:text-[#0A1329] hover:bg-[#ABC5F5]/30 transition-colors"
             aria-label="Close interactive demo"
           >
             <X className="w-5 h-5" />
@@ -45,7 +45,7 @@ export default function InteractiveDemoModal({ project, onClose }: Props) {
         </div>
 
         {/* Modal Body */}
-        <div className="p-6 overflow-y-auto space-y-6 bg-[#051540]">
+        <div className="p-6 overflow-y-auto space-y-6 bg-[#FFF8DF]">
           {project.interactiveDemoType === "sms" && <SmsDemo />}
           {project.interactiveDemoType === "fraud" && <FraudDemo />}
           {project.interactiveDemoType === "genre" && <GenreDemo />}
@@ -53,11 +53,11 @@ export default function InteractiveDemoModal({ project, onClose }: Props) {
         </div>
 
         {/* Footer */}
-        <div className="p-4 border-t border-[#1C3670]/40 bg-[#000133] flex items-center justify-between text-xs text-[#FCF1D1]/60 font-mono">
+        <div className="p-4 border-t border-[#ABC5F5]/40 bg-[#FFF2C7] flex items-center justify-between text-xs text-[#0A1329]/60 font-mono">
           <span>Accuracy benchmark: {project.metrics?.[0]?.value || "Verified"}</span>
           <button
             onClick={onClose}
-            className="px-4 py-1.5 rounded-lg bg-[#1C3670] text-[#FCF1D1] hover:bg-[#1C3670]/80 transition-colors font-sans font-medium"
+            className="px-4 py-1.5 rounded-lg bg-[#8DAAFF] text-[#0A1329] hover:bg-[#ABC5F5]/80 transition-colors font-sans font-medium"
           >
             Close
           </button>
@@ -95,28 +95,28 @@ function SmsDemo() {
 
   return (
     <div className="space-y-4 text-xs font-mono">
-      <div className="flex items-center gap-2 text-[#FCF1D1] font-semibold text-sm">
-        <MessageSquare className="w-4 h-4 text-[#FCF1D1]" />
+      <div className="flex items-center gap-2 text-[#0A1329] font-semibold text-sm">
+        <MessageSquare className="w-4 h-4 text-[#0A1329]" />
         <span>Spam SMS Text Classification (TF-IDF + Naive Bayes)</span>
       </div>
 
       <div>
-        <label className="text-[#FCF1D1]/80 block mb-1">Input SMS Message:</label>
+        <label className="text-[#0A1329]/80 block mb-1">Input SMS Message:</label>
         <textarea
           rows={3}
           value={text}
           onChange={(e) => analyze(e.target.value)}
-          className="w-full rounded-xl bg-[#000133] border border-[#1C3670] p-3 text-[#FCF1D1] focus:border-[#FCF1D1] focus:outline-none"
+          className="w-full rounded-xl bg-[#FFF2C7] border border-[#ABC5F5] p-3 text-[#0A1329] focus:border-[#FCF1D1] focus:outline-none"
         />
       </div>
 
       <div className="flex flex-wrap gap-2 text-[11px]">
-        <span className="text-[#FCF1D1]/50 self-center">Presets:</span>
+        <span className="text-[#0A1329]/50 self-center">Presets:</span>
         <button
           onClick={() =>
             analyze("URGENT: You have won a 1000 cash prize or free vacation! Call 0800 now to claim your reward.")
           }
-          className="px-2.5 py-1 rounded bg-[#000133] border border-[#1C3670] text-[#FCF1D1] hover:bg-[#1C3670]/40"
+          className="px-2.5 py-1 rounded bg-[#FFF2C7] border border-[#ABC5F5] text-[#0A1329] hover:bg-[#ABC5F5]/40"
         >
           Spam Sample
         </button>
@@ -124,31 +124,31 @@ function SmsDemo() {
           onClick={() =>
             analyze("Hey Arya, are you free this afternoon to review the machine learning lecture notes?")
           }
-          className="px-2.5 py-1 rounded bg-[#000133] border border-[#1C3670] text-[#FCF1D1] hover:bg-[#1C3670]/40"
+          className="px-2.5 py-1 rounded bg-[#FFF2C7] border border-[#ABC5F5] text-[#0A1329] hover:bg-[#ABC5F5]/40"
         >
           Legitimate (Ham)
         </button>
       </div>
 
-      <div className="p-4 rounded-xl bg-[#000133] border border-[#1C3670] flex items-center justify-between">
+      <div className="p-4 rounded-xl bg-[#FFF2C7] border border-[#ABC5F5] flex items-center justify-between">
         <div className="flex items-center gap-3">
           {result.isSpam ? (
-            <AlertTriangle className="w-5 h-5 text-[#FCF1D1]" />
+            <AlertTriangle className="w-5 h-5 text-[#0A1329]" />
           ) : (
-            <CheckCircle className="w-5 h-5 text-[#FCF1D1]" />
+            <CheckCircle className="w-5 h-5 text-[#0A1329]" />
           )}
           <div>
-            <div className="text-sm font-bold text-[#FCF1D1]">
+            <div className="text-sm font-bold text-[#0A1329]">
               Prediction: {result.isSpam ? "SPAM DETECTED" : "LEGITIMATE (HAM)"}
             </div>
-            <div className="text-[11px] text-[#FCF1D1]/60">
+            <div className="text-[11px] text-[#0A1329]/60">
               Matched Tokens: {result.tokens.join(", ")}
             </div>
           </div>
         </div>
         <div className="text-right">
-          <div className="text-base font-bold text-[#FCF1D1]">{result.confidence}%</div>
-          <div className="text-[10px] text-[#FCF1D1]/50">Reported Metric</div>
+          <div className="text-base font-bold text-[#0A1329]">{result.confidence}%</div>
+          <div className="text-[10px] text-[#0A1329]/50">Reported Metric</div>
         </div>
       </div>
     </div>
@@ -171,14 +171,14 @@ function FraudDemo() {
 
   return (
     <div className="space-y-4 text-xs font-mono">
-      <div className="flex items-center gap-2 text-[#FCF1D1] font-semibold text-sm">
-        <ShieldCheck className="w-4 h-4 text-[#FCF1D1]" />
+      <div className="flex items-center gap-2 text-[#0A1329] font-semibold text-sm">
+        <ShieldCheck className="w-4 h-4 text-[#0A1329]" />
         <span>Credit Card Fraud Anomaly Sensitivity Matrix</span>
       </div>
 
-      <div className="p-3.5 rounded-xl bg-[#000133] border border-[#1C3670] space-y-3">
+      <div className="p-3.5 rounded-xl bg-[#FFF2C7] border border-[#ABC5F5] space-y-3">
         <div>
-          <div className="flex justify-between text-[#FCF1D1] mb-1">
+          <div className="flex justify-between text-[#0A1329] mb-1">
             <span>Transaction Amount ($):</span>
             <span className="font-bold">${amount}</span>
           </div>
@@ -194,7 +194,7 @@ function FraudDemo() {
         </div>
 
         <div className="flex gap-4">
-          <label className="flex items-center gap-2 text-[#FCF1D1]/80 cursor-pointer">
+          <label className="flex items-center gap-2 text-[#0A1329]/80 cursor-pointer">
             <input
               type="checkbox"
               checked={isAbroad}
@@ -204,7 +204,7 @@ function FraudDemo() {
             <span>Foreign IP / Geolocation</span>
           </label>
 
-          <label className="flex items-center gap-2 text-[#FCF1D1]/80 cursor-pointer">
+          <label className="flex items-center gap-2 text-[#0A1329]/80 cursor-pointer">
             <input
               type="checkbox"
               checked={unusualTime}
@@ -216,18 +216,18 @@ function FraudDemo() {
         </div>
       </div>
 
-      <div className="p-4 rounded-xl bg-[#000133] border border-[#1C3670] flex items-center justify-between">
+      <div className="p-4 rounded-xl bg-[#FFF2C7] border border-[#ABC5F5] flex items-center justify-between">
         <div>
-          <div className="text-sm font-bold text-[#FCF1D1]">
+          <div className="text-sm font-bold text-[#0A1329]">
             Classification: {isHighRisk ? "FLAGGED AS SUSPICIOUS" : "NORMAL TRANSACTION"}
           </div>
-          <div className="text-[11px] text-[#FCF1D1]/60">
+          <div className="text-[11px] text-[#0A1329]/60">
             Anomaly Probability Score: {riskScore}%
           </div>
         </div>
         <div className="text-right">
-          <div className="text-base font-bold text-[#FCF1D1]">99.74%</div>
-          <div className="text-[10px] text-[#FCF1D1]/50">Reported Benchmark</div>
+          <div className="text-base font-bold text-[#0A1329]">99.74%</div>
+          <div className="text-[10px] text-[#0A1329]/50">Reported Benchmark</div>
         </div>
       </div>
     </div>
@@ -259,28 +259,28 @@ function GenreDemo() {
 
   return (
     <div className="space-y-4 text-xs font-mono">
-      <div className="flex items-center gap-2 text-[#FCF1D1] font-semibold text-sm">
-        <Film className="w-4 h-4 text-[#FCF1D1]" />
+      <div className="flex items-center gap-2 text-[#0A1329] font-semibold text-sm">
+        <Film className="w-4 h-4 text-[#0A1329]" />
         <span>Movie Genre Classification from Plot Summary (TF-IDF + Logistic Regression)</span>
       </div>
 
       <div>
-        <label className="text-[#FCF1D1]/80 block mb-1">Film Plot Synopsis:</label>
+        <label className="text-[#0A1329]/80 block mb-1">Film Plot Synopsis:</label>
         <textarea
           rows={3}
           value={plot}
           onChange={(e) => analyze(e.target.value)}
-          className="w-full rounded-xl bg-[#000133] border border-[#1C3670] p-3 text-[#FCF1D1] focus:border-[#FCF1D1] focus:outline-none"
+          className="w-full rounded-xl bg-[#FFF2C7] border border-[#ABC5F5] p-3 text-[#0A1329] focus:border-[#FCF1D1] focus:outline-none"
         />
       </div>
 
       <div className="flex flex-wrap gap-2 text-[11px]">
-        <span className="text-[#FCF1D1]/50 self-center">Presets:</span>
+        <span className="text-[#0A1329]/50 self-center">Presets:</span>
         <button
           onClick={() =>
             analyze("A deep-space expedition investigates an abandoned vessel orbiting Saturn, uncovering a sentient alien anomaly.")
           }
-          className="px-2.5 py-1 rounded bg-[#000133] border border-[#1C3670] text-[#FCF1D1] hover:bg-[#1C3670]/40"
+          className="px-2.5 py-1 rounded bg-[#FFF2C7] border border-[#ABC5F5] text-[#0A1329] hover:bg-[#ABC5F5]/40"
         >
           Sci-Fi
         </button>
@@ -288,20 +288,20 @@ function GenreDemo() {
           onClick={() =>
             analyze("A veteran detective pieces together clues across Chicago to catch a clandestine jewel thief.")
           }
-          className="px-2.5 py-1 rounded bg-[#000133] border border-[#1C3670] text-[#FCF1D1] hover:bg-[#1C3670]/40"
+          className="px-2.5 py-1 rounded bg-[#FFF2C7] border border-[#ABC5F5] text-[#0A1329] hover:bg-[#ABC5F5]/40"
         >
           Mystery
         </button>
       </div>
 
-      <div className="p-4 rounded-xl bg-[#000133] border border-[#1C3670] flex items-center justify-between">
+      <div className="p-4 rounded-xl bg-[#FFF2C7] border border-[#ABC5F5] flex items-center justify-between">
         <div>
-          <div className="text-sm font-bold text-[#FCF1D1]">Predicted Genre: {prediction}</div>
-          <div className="text-[11px] text-[#FCF1D1]/60">Vector representation: Sparse TF-IDF tokens</div>
+          <div className="text-sm font-bold text-[#0A1329]">Predicted Genre: {prediction}</div>
+          <div className="text-[11px] text-[#0A1329]/60">Vector representation: Sparse TF-IDF tokens</div>
         </div>
         <div className="text-right">
-          <div className="text-base font-bold text-[#FCF1D1]">97.00%</div>
-          <div className="text-[10px] text-[#FCF1D1]/50">Reported Benchmark</div>
+          <div className="text-base font-bold text-[#0A1329]">97.00%</div>
+          <div className="text-[10px] text-[#0A1329]/50">Reported Benchmark</div>
         </div>
       </div>
     </div>
@@ -314,31 +314,31 @@ function GenreDemo() {
 function LedgerDemo() {
   return (
     <div className="space-y-4 text-xs font-mono">
-      <div className="flex items-center gap-2 text-[#FCF1D1] font-semibold text-sm">
-        <Terminal className="w-4 h-4 text-[#FCF1D1]" />
+      <div className="flex items-center gap-2 text-[#0A1329] font-semibold text-sm">
+        <Terminal className="w-4 h-4 text-[#0A1329]" />
         <span>CA Work Ease System Pipeline Concept</span>
       </div>
 
-      <p className="text-[#FCF1D1]/70 leading-relaxed">
+      <p className="text-[#0A1329]/70 leading-relaxed">
         Academic project architecture conceptualized to help accounting professionals analyze CSV records and automate duplicate audit checks.
       </p>
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 text-center">
-        <div className="p-3 rounded-xl bg-[#000133] border border-[#1C3670]">
-          <div className="text-xs font-bold text-[#FCF1D1]">Step 1</div>
-          <div className="text-[11px] text-[#FCF1D1]/60 mt-1">CSV Ingestion</div>
+        <div className="p-3 rounded-xl bg-[#FFF2C7] border border-[#ABC5F5]">
+          <div className="text-xs font-bold text-[#0A1329]">Step 1</div>
+          <div className="text-[11px] text-[#0A1329]/60 mt-1">CSV Ingestion</div>
         </div>
-        <div className="p-3 rounded-xl bg-[#000133] border border-[#1C3670]">
-          <div className="text-xs font-bold text-[#FCF1D1]">Step 2</div>
-          <div className="text-[11px] text-[#FCF1D1]/60 mt-1">Pandas Cleaning</div>
+        <div className="p-3 rounded-xl bg-[#FFF2C7] border border-[#ABC5F5]">
+          <div className="text-xs font-bold text-[#0A1329]">Step 2</div>
+          <div className="text-[11px] text-[#0A1329]/60 mt-1">Pandas Cleaning</div>
         </div>
-        <div className="p-3 rounded-xl bg-[#000133] border border-[#1C3670]">
-          <div className="text-xs font-bold text-[#FCF1D1]">Step 3</div>
-          <div className="text-[11px] text-[#FCF1D1]/60 mt-1">Audit Engine</div>
+        <div className="p-3 rounded-xl bg-[#FFF2C7] border border-[#ABC5F5]">
+          <div className="text-xs font-bold text-[#0A1329]">Step 3</div>
+          <div className="text-[11px] text-[#0A1329]/60 mt-1">Audit Engine</div>
         </div>
-        <div className="p-3 rounded-xl bg-[#000133] border border-[#1C3670]">
-          <div className="text-xs font-bold text-[#FCF1D1]">Step 4</div>
-          <div className="text-[11px] text-[#FCF1D1]/60 mt-1">Summary View</div>
+        <div className="p-3 rounded-xl bg-[#FFF2C7] border border-[#ABC5F5]">
+          <div className="text-xs font-bold text-[#0A1329]">Step 4</div>
+          <div className="text-[11px] text-[#0A1329]/60 mt-1">Summary View</div>
         </div>
       </div>
     </div>

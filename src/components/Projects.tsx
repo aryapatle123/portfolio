@@ -20,36 +20,36 @@ export default function Projects() {
   });
 
   return (
-    <section id="projects" className="py-24 relative border-t border-[#1C3670]/40 bg-[#000133]">
+    <section id="projects" className="py-24 relative border-t border-[#ABC5F5]/60 bg-[#FFF8DF]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header with Sparsh Accent */}
+        {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
             <div className="flex items-center space-x-3 mb-2">
-              <span className="w-2 h-6 bg-[#FCF1D1]" />
-              <span className="font-mono text-xs tracking-widest text-[#FCF1D1] uppercase font-bold">
+              <span className="w-2 h-6 bg-[#8DAAFF]" />
+              <span className="font-mono text-xs tracking-widest text-[#2E4069] uppercase font-bold">
                 TOP PROJECTS
               </span>
-              <span className="font-mono text-xs text-[#FCF1D1]/60 uppercase">
+              <span className="font-mono text-xs text-[#5C729E] uppercase font-semibold">
                 FEATURED MACHINE LEARNING SYSTEMS
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#FCF1D1]">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#0A1329]">
               Featured Projects
             </h2>
           </div>
 
           {/* Filter Pills */}
-          <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-xl bg-[#051540] border border-[#1C3670] self-start md:self-auto font-mono text-xs">
+          <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-xl bg-[#FFF2C7] border border-[#ABC5F5] self-start md:self-auto font-mono text-xs shadow-sm">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveFilter(cat)}
-                className={`px-3 py-1.5 rounded-lg uppercase tracking-wider transition-all ${
+                className={`px-3 py-1.5 rounded-lg uppercase tracking-wider transition-all font-semibold ${
                   activeFilter === cat
-                    ? "bg-[#1C3670] text-[#FCF1D1] font-bold border border-[#FCF1D1]/30"
-                    : "text-[#FCF1D1]/60 hover:text-[#FCF1D1]"
+                    ? "bg-[#8DAAFF] text-[#0A1329] border border-[#8DAAFF] shadow-xs"
+                    : "text-[#2E4069] hover:text-[#0A1329]"
                 }`}
               >
                 {cat}
@@ -58,7 +58,7 @@ export default function Projects() {
           </div>
         </div>
 
-        {/* Clean Projects Grid without boilerplate clutter */}
+        {/* Clean Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {filteredProjects.map((project, idx) => (
             <ProjectCard
