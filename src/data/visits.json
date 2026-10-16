@@ -1,7 +1,28 @@
 {
-  "totalVisits": 2,
-  "lastUpdated": "2026-10-16T08:54:00.094Z",
+  "totalVisits": 4,
+  "lastUpdated": "2026-10-16T09:00:32.192Z",
   "recentVisits": [
+    {
+      "id": "visit-1792141232216-633",
+      "timestamp": "2026-10-16T09:00:32.192Z",
+      "device": "Desktop",
+      "os": "Windows",
+      "browser": "Web Browser",
+      "referrer": "Direct Visit",
+      "ip": "103.83.136.174",
+      "location": "Nagpur, Maharashtra, India",
+      "status": "Logged & Notified"
+    },
+    {
+      "id": "visit-1792141166471-670",
+      "timestamp": "2026-10-16T08:59:26.470Z",
+      "device": "Desktop",
+      "os": "Windows",
+      "browser": "Web Browser",
+      "referrer": "Portfolio Direct",
+      "ip": "1",
+      "status": "Logged & Notified"
+    },
     {
       "id": "visit-1792140840146-607",
       "timestamp": "2026-10-16T08:54:00.094Z",
