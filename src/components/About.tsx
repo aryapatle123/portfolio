@@ -1,101 +1,138 @@
 import React from "react";
-import { BookOpen, Brain, Code2, Database, ShieldAlert, Cpu } from "lucide-react";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 
 export default function About() {
-  const highlights = [
-    {
-      icon: <Brain className="w-5 h-5 text-[#FCF1D1]" />,
-      title: "Machine Learning & NLP",
-      desc: "Text classification, TF-IDF vectorization, feature extraction, and algorithm tuning using Scikit-Learn."
-    },
-    {
-      icon: <ShieldAlert className="w-5 h-5 text-[#FCF1D1]" />,
-      title: "Fraud Detection & Analytics",
-      desc: "Anomaly detection and binary classification tackling severe class imbalance in transaction logs."
-    },
-    {
-      icon: <Code2 className="w-5 h-5 text-[#FCF1D1]" />,
-      title: "Python Software Development",
-      desc: "Writing modular scripts, Jupyter data exploration, and Flask web backend prototypes for data analysis."
-    },
-    {
-      icon: <Database className="w-5 h-5 text-[#FCF1D1]" />,
-      title: "Core Computer Science",
-      desc: "Coursework in Database Management Systems (DBMS), Operating Systems, and Compiler Design."
-    }
-  ];
-
   return (
-    <section id="about" className="py-24 relative border-t border-[#1C3670]/40 bg-[#000133]">
+    <section id="about" className="py-24 bg-[#000133] border-b border-[#1C3670]/40 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
-          <div>
-            <div className="badge-pill mb-3">
-              <BookOpen className="w-3.5 h-3.5 text-[#FCF1D1]" />
-              <span>Background & Philosophy</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#FCF1D1]">
-              About Arya Patle
-            </h2>
-          </div>
-          <p className="text-[#FCF1D1]/65 max-w-md text-sm sm:text-base leading-relaxed">
-            Hands-on machine learning, authentic academic foundations, and practical problem-solving.
-          </p>
+        {/* Section Header with Sparsh-style Architectural Accent */}
+        <div className="flex items-center space-x-3 mb-8">
+          <span className="w-2 h-6 bg-[#FCF1D1]" />
+          <span className="font-mono text-xs tracking-widest text-[#FCF1D1] uppercase font-bold">
+            ABOUT ME
+          </span>
+          <span className="font-mono text-xs text-[#FCF1D1]/60 uppercase">
+            ENGINEERING PROFILE
+          </span>
         </div>
 
-        {/* Narrative & Focus Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          {/* Main Story Column */}
-          <div className="lg:col-span-7 editorial-card rounded-2xl p-7 sm:p-9 space-y-6">
-            <h3 className="text-xl sm:text-2xl font-semibold text-[#FCF1D1] tracking-tight flex items-center gap-2">
-              <Cpu className="w-5 h-5 text-[#FCF1D1]" />
-              <span>Bridging Theory with Practical Implementation</span>
-            </h3>
+          {/* Left Column: Focused Narrative */}
+          <div className="lg:col-span-7 space-y-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#FCF1D1]">
+              Building intelligent systems, not just code.
+            </h2>
 
-            <div className="space-y-4 text-[#FCF1D1]/75 leading-relaxed text-sm sm:text-base font-light">
-              {PORTFOLIO_DATA.personal.bio.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
+            <div className="space-y-4 text-[#FCF1D1]/80 text-base sm:text-lg leading-relaxed font-light">
+              <p>
+                I am a Computer Science student focused on machine learning, natural language processing, and practical software development. I specialize in building data pipelines, NLP text classification models, and anomaly detection algorithms designed to solve concrete operational problems.
+              </p>
+              <p>
+                Through academic projects and an industry internship at CodSoft, I have engineered TF-IDF feature extraction pipelines, trained Naive Bayes and Logistic Regression classifiers, tackled severe minority-class imbalance in credit card fraud detection, and serialized model artifacts for deployment.
+              </p>
+              <p>
+                Alongside engineering, I independently founded bloomi_15, a small handmade floral craft venture where I balance creative artisan design with real-world execution, client communication, and order fulfillment.
+              </p>
             </div>
 
-            {/* Academic Status Callout */}
-            <div className="pt-4 border-t border-[#1C3670]/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-              <div className="text-[#FCF1D1]/65">
-                <span className="text-[#FCF1D1]/45 font-mono">Current Status:</span>{" "}
-                <span className="text-[#FCF1D1] font-medium">{PORTFOLIO_DATA.education.degree}</span>
+            <div className="p-4 bg-[#051540] border border-[#1C3670] flex flex-col sm:flex-row justify-between gap-4 font-mono text-xs">
+              <div>
+                <span className="text-[#FCF1D1]/60 block uppercase">DEGREE PROGRAM</span>
+                <span className="text-[#FCF1D1] font-semibold block mt-0.5">
+                  B.Tech in Computer Science and Engineering
+                </span>
               </div>
-              <div className="font-mono text-[#FCF1D1] bg-[#000133] px-3 py-1 rounded-full border border-[#1C3670] w-fit">
-                {PORTFOLIO_DATA.education.details}
+              <div>
+                <span className="text-[#FCF1D1]/60 block uppercase">ACADEMIC STATUS</span>
+                <span className="text-[#FCF1D1] font-semibold block mt-0.5">
+                  5th Semester // Section B
+                </span>
               </div>
             </div>
           </div>
 
-          {/* Pillars Column */}
-          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
-            {highlights.map((item, idx) => (
-              <div
-                key={idx}
-                className="p-5 rounded-xl bg-[#051540] border border-[#1C3670] hover:border-[#FCF1D1]/40 transition-all duration-200"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="p-2.5 rounded-lg bg-[#000133] border border-[#1C3670]">
-                    {item.icon}
-                  </div>
-                  <div>
-                    <h4 className="text-base font-semibold text-[#FCF1D1] mb-1">
-                      {item.title}
-                    </h4>
-                    <p className="text-xs text-[#FCF1D1]/65 leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
+          {/* Right Column: Telemetry Metrics & Operational Status */}
+          <div className="lg:col-span-5 space-y-4">
+            <div className="border border-[#1C3670] bg-[#051540] p-6 telemetry-bracket">
+              
+              <div className="flex items-center justify-between border-b border-[#1C3670] pb-3 mb-6 font-mono text-xs text-[#FCF1D1]/70">
+                <span className="text-[#FCF1D1] font-bold">HIGHLIGHTS &amp; METRICS</span>
+                <span>STATUS: ACTIVE</span>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="p-4 bg-[#000133] border border-[#1C3670]">
+                  <span className="font-mono text-3xl sm:text-4xl font-extrabold text-[#FCF1D1] block">
+                    03+
+                  </span>
+                  <span className="font-mono text-[11px] tracking-wider text-[#FCF1D1] uppercase font-bold mt-1 block">
+                    ML SYSTEMS
+                  </span>
+                  <span className="text-[11px] text-[#FCF1D1]/60 block mt-1">
+                    NLP, Anomaly, Classification
+                  </span>
+                </div>
+
+                <div className="p-4 bg-[#000133] border border-[#1C3670]">
+                  <span className="font-mono text-3xl sm:text-4xl font-extrabold text-[#FCF1D1] block">
+                    01
+                  </span>
+                  <span className="font-mono text-[11px] tracking-wider text-[#FCF1D1] uppercase font-bold mt-1 block">
+                    INTERNSHIP
+                  </span>
+                  <span className="text-[11px] text-[#FCF1D1]/60 block mt-1">
+                    CodSoft Machine Learning
+                  </span>
+                </div>
+
+                <div className="p-4 bg-[#000133] border border-[#1C3670]">
+                  <span className="font-mono text-3xl sm:text-4xl font-extrabold text-[#FCF1D1] block">
+                    5TH
+                  </span>
+                  <span className="font-mono text-[11px] tracking-wider text-[#FCF1D1] uppercase font-bold mt-1 block">
+                    SEMESTER
+                  </span>
+                  <span className="text-[11px] text-[#FCF1D1]/60 block mt-1">
+                    Undergraduate B.Tech CSE
+                  </span>
+                </div>
+
+                <div className="p-4 bg-[#000133] border border-[#1C3670]">
+                  <span className="font-mono text-3xl sm:text-4xl font-extrabold text-[#FCF1D1] block">
+                    01
+                  </span>
+                  <span className="font-mono text-[11px] tracking-wider text-[#FCF1D1] uppercase font-bold mt-1 block">
+                    STARTUP
+                  </span>
+                  <span className="text-[11px] text-[#FCF1D1]/60 block mt-1">
+                    bloomi_15 Craft Venture
+                  </span>
                 </div>
               </div>
-            ))}
+
+              {/* Operational Status Checklist */}
+              <div className="mt-6 pt-4 border-t border-[#1C3670] space-y-2 font-mono text-xs">
+                <div className="flex items-center justify-between text-[#FCF1D1]/70">
+                  <span>MACHINE LEARNING &amp; NLP PIPELINES</span>
+                  <span className="text-[#FCF1D1] font-semibold">OPERATIONAL</span>
+                </div>
+                <div className="flex items-center justify-between text-[#FCF1D1]/70">
+                  <span>FEATURE EXTRACTION &amp; TF-IDF</span>
+                  <span className="text-[#FCF1D1] font-semibold">OPERATIONAL</span>
+                </div>
+                <div className="flex items-center justify-between text-[#FCF1D1]/70">
+                  <span>DATA WRANGLING &amp; PYTHON</span>
+                  <span className="text-[#FCF1D1] font-semibold">OPERATIONAL</span>
+                </div>
+                <div className="flex items-center justify-between text-[#FCF1D1]/70">
+                  <span>MODEL EVALUATION &amp; SERIALIZATION</span>
+                  <span className="text-[#FCF1D1] font-semibold">OPERATIONAL</span>
+                </div>
+              </div>
+
+            </div>
           </div>
 
         </div>

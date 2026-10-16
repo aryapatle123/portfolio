@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { Clock, CheckCircle, ArrowUpRight, Sparkles, Heart } from "lucide-react";
+import { Clock, CheckCircle, ArrowUpRight, Sparkles } from "lucide-react";
 import InstagramIcon from "./InstagramIcon";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 
@@ -10,10 +10,28 @@ export default function Entrepreneurship() {
   const e = PORTFOLIO_DATA.entrepreneurship;
 
   return (
-    <section id="entrepreneurship" className="py-20 relative border-t border-[#1C3670]/40 bg-[#000133]">
+    <section id="entrepreneurship" className="py-24 relative border-t border-[#1C3670]/40 bg-[#000133]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="max-w-5xl mx-auto editorial-card rounded-2xl p-6 sm:p-9 border border-[#1C3670] relative overflow-hidden bg-[#051540]">
+        {/* Section Header with Sparsh Accent */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div>
+            <div className="flex items-center space-x-3 mb-2">
+              <span className="w-2 h-6 bg-[#FCF1D1]" />
+              <span className="font-mono text-xs tracking-widest text-[#FCF1D1] uppercase font-bold">
+                STARTUP VENTURE
+              </span>
+              <span className="font-mono text-xs text-[#FCF1D1]/60 uppercase">
+                CREATIVE BUSINESS INITIATIVE
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#FCF1D1]">
+              bloomi_15
+            </h2>
+          </div>
+        </div>
+
+        <div className="max-w-5xl mx-auto rounded-2xl p-6 sm:p-9 border border-[#1C3670] relative overflow-hidden bg-[#051540] telemetry-bracket">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
@@ -35,7 +53,7 @@ export default function Entrepreneurship() {
                   <div className="absolute top-2.5 right-2.5 text-[#FCF1D1]/40 font-mono text-[10px] select-none">+</div>
                 </div>
 
-                {/* Subtle caption underneath bouquet */}
+                {/* Caption underneath bouquet */}
                 <div className="mt-2.5 px-2 py-1.5 flex items-center justify-between text-xs text-[#FCF1D1]/75 font-mono">
                   <span className="flex items-center gap-1.5">
                     <Sparkles className="w-3.5 h-3.5 text-[#FCF1D1]" />
@@ -51,21 +69,20 @@ export default function Entrepreneurship() {
               
               {/* Badge & Title */}
               <div>
-                <div className="badge-pill mb-2.5">
-                  <Heart className="w-3.5 h-3.5 text-[#FCF1D1]" />
-                  <span>Startup & Creative Venture</span>
-                </div>
+                <span className="text-[10px] font-mono uppercase text-[#FCF1D1]/60 tracking-wider block">
+                  FOUNDER &amp; ARTISAN // SOLO ENTERPRISE
+                </span>
                 
-                <h3 className="text-2xl sm:text-3xl font-bold text-[#FCF1D1] tracking-tight">
+                <h3 className="text-2xl sm:text-3xl font-bold text-[#FCF1D1] tracking-tight mt-1">
                   {e.title}
                 </h3>
 
-                <div className="flex flex-wrap items-center gap-2.5 mt-2">
-                  <p className="text-xs font-mono text-[#FCF1D1]/80">
+                <div className="flex flex-wrap items-center gap-2.5 mt-2 font-mono text-xs">
+                  <span className="text-[#FCF1D1]/80">
                     {e.role} • {e.type}
-                  </p>
+                  </span>
                   <span className="text-[#1C3670]">•</span>
-                  <div className="inline-flex items-center gap-1.5 text-[11px] font-mono text-[#FCF1D1]/85 bg-[#000133] px-2.5 py-1 rounded-md border border-[#1C3670]">
+                  <div className="inline-flex items-center gap-1.5 text-[11px] text-[#FCF1D1]/85 bg-[#000133] px-2.5 py-1 rounded-md border border-[#1C3670]">
                     <Clock className="w-3 h-3 text-[#FCF1D1]" />
                     <span>Concurrent with CSE Studies</span>
                   </div>
@@ -82,7 +99,7 @@ export default function Entrepreneurship() {
                 {e.highlights.map((highlight, index) => (
                   <div
                     key={index}
-                    className="p-3.5 rounded-xl bg-[#000133] border border-[#1C3670]/50 space-y-1.5"
+                    className="p-3.5 rounded-xl bg-[#000133] border border-[#1C3670]/50 space-y-1.5 font-mono"
                   >
                     <div className="flex items-center gap-1.5 text-xs font-semibold text-[#FCF1D1]">
                       <CheckCircle className="w-3.5 h-3.5 text-[#FCF1D1] shrink-0" />
@@ -94,7 +111,7 @@ export default function Entrepreneurship() {
                           : "Academic Balance"}
                       </span>
                     </div>
-                    <p className="text-[11px] text-[#FCF1D1]/65 leading-relaxed">
+                    <p className="text-[11px] text-[#FCF1D1]/65 leading-relaxed font-sans">
                       {highlight}
                     </p>
                   </div>
@@ -105,7 +122,7 @@ export default function Entrepreneurship() {
               {e.instagramUrl && (
                 <div className="pt-3 border-t border-[#1C3670]/40 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
                   <span className="text-[#FCF1D1]/60 font-mono">
-                    Explore custom arrangements & craft catalog
+                    Explore custom arrangements &amp; craft catalog
                   </span>
                   <a
                     href={e.instagramUrl}

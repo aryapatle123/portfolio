@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { ArrowDown, Mail, MapPin } from "lucide-react";
+import { ArrowDown, Mail, MapPin, Terminal, ExternalLink, ArrowUpRight } from "lucide-react";
 import GithubIcon from "./GithubIcon";
 import LinkedinIcon from "./LinkedinIcon";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
@@ -12,88 +12,90 @@ export default function Hero() {
   const [imgSrc, setImgSrc] = useState<string>("/profile.jpg");
 
   return (
-    <section id="home" className="relative min-h-[90vh] flex items-center justify-center pt-28 pb-20 overflow-hidden bg-[#000133]">
+    <section id="home" className="relative min-h-[92vh] pt-32 pb-20 flex flex-col justify-center tech-grid-bg border-b border-[#1C3670]/40 overflow-hidden bg-[#000133]">
       {/* Restrained Neural Mesh Canvas */}
       <NeuralCanvas />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+        
+        {/* Main Hero Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           
-          {/* Left Column: Editorial Bio & Headline */}
+          {/* Left Column: Bold, High-Impact Engineering Presentation */}
           <div className="lg:col-span-7 space-y-7 text-left">
             
-            {/* Status / Role Tag */}
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#051540] border border-[#1C3670] text-xs font-mono tracking-wide text-[#FCF1D1]">
-              <span className="w-2 h-2 rounded-full bg-[#FCF1D1]" />
-              <span>B.Tech Computer Science & Engineering • 5th Semester</span>
+            {/* Telemetry Status Pill */}
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 bg-[#051540] border border-[#1C3670]">
+              <span className="w-2 h-2 rounded-full bg-[#FCF1D1] animate-pulse" />
+              <span className="font-mono text-xs tracking-wider text-[#FCF1D1] uppercase font-semibold">
+                5TH SEMESTER B.TECH // COMPUTER SCIENCE &amp; ENGINEERING
+              </span>
             </div>
 
-            {/* Main Greeting & Headline */}
-            <div className="space-y-3">
-              <p className="text-[#FCF1D1]/65 text-sm font-medium tracking-wide">
-                Hi, I am <span className="text-[#FCF1D1] font-semibold">{PORTFOLIO_DATA.personal.name}</span>
-              </p>
-              
-              <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-[#FCF1D1] leading-[1.12]">
-                Building intelligent software with{" "}
-                <span className="text-[#FCF1D1] underline decoration-[#1C3670] decoration-2 underline-offset-8">
-                  Python & Machine Learning
+            {/* Massive Sparsh-style Headline */}
+            <div className="space-y-2">
+              <h1 className="text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight text-[#FCF1D1] uppercase leading-[0.92]">
+                ARYA{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FCF1D1] via-[#F5E6BD] to-[#FCF1D1]/60">
+                  PATLE
                 </span>
-                .
               </h1>
+              <p className="font-mono text-xs sm:text-sm tracking-widest text-[#FCF1D1] uppercase font-bold pt-1">
+                MACHINE LEARNING // NLP // SOFTWARE ENGINEERING
+              </p>
             </div>
 
-            {/* Subtitle / Focus Statement */}
-            <p className="text-base sm:text-lg text-[#FCF1D1]/75 max-w-2xl font-light leading-relaxed">
-              {PORTFOLIO_DATA.personal.subheadline}
+            {/* Concise, Authoritative Executive Summary */}
+            <p className="text-base sm:text-lg text-[#FCF1D1]/80 max-w-2xl leading-relaxed font-sans">
+              5th Semester Computer Science student building applied machine learning systems, natural language processing models, and data-driven software. Practical experience across text classification pipelines, imbalanced fraud detection, and model evaluation.
             </p>
 
-            {/* Action Buttons: Featured Work, LinkedIn, Email, GitHub */}
+            {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <a
                 href="#projects"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-[#000133] bg-[#FCF1D1] hover:bg-[#F5E6BD] shadow-md transition-all duration-200 hover:-translate-y-0.5"
+                className="px-6 py-3 bg-[#FCF1D1] hover:bg-[#F5E6BD] text-[#000133] font-mono text-xs tracking-wider uppercase font-bold transition-all shadow-md inline-flex items-center gap-2 border border-[#FCF1D1] hover:-translate-y-0.5"
               >
-                <span>View Featured Work</span>
-                <ArrowDown className="w-4 h-4" />
-              </a>
-
-              <a
-                href={PORTFOLIO_DATA.socials.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-medium text-[#FCF1D1] bg-[#051540] border border-[#1C3670] hover:border-[#FCF1D1]/50 hover:bg-[#071D57] transition-all duration-200 hover:-translate-y-0.5"
-              >
-                <LinkedinIcon className="w-4 h-4 text-[#FCF1D1]" />
-                <span>LinkedIn</span>
-              </a>
-
-              <a
-                href={`mailto:${PORTFOLIO_DATA.socials.email}`}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-medium text-[#FCF1D1] bg-[#051540] border border-[#1C3670] hover:border-[#FCF1D1]/50 hover:bg-[#071D57] transition-all duration-200 hover:-translate-y-0.5"
-              >
-                <Mail className="w-4 h-4 text-[#FCF1D1]" />
-                <span>Email</span>
+                <span>VIEW PROJECTS</span>
+                <ArrowDown className="w-4 h-4 text-[#000133]" />
               </a>
 
               <a
                 href={PORTFOLIO_DATA.socials.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-medium text-[#FCF1D1] bg-[#051540] border border-[#1C3670] hover:border-[#FCF1D1]/50 hover:bg-[#071D57] transition-all duration-200 hover:-translate-y-0.5"
+                className="px-5 py-3 border border-[#1C3670] hover:border-[#FCF1D1]/60 text-[#FCF1D1] font-mono text-xs tracking-wider uppercase transition-all inline-flex items-center gap-2 bg-[#051540] hover:bg-[#071D57] hover:-translate-y-0.5"
               >
                 <GithubIcon className="w-4 h-4 text-[#FCF1D1]" />
-                <span>GitHub</span>
+                <span>GITHUB</span>
+              </a>
+
+              <a
+                href={PORTFOLIO_DATA.socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-5 py-3 border border-[#1C3670] hover:border-[#FCF1D1]/60 text-[#FCF1D1] font-mono text-xs tracking-wider uppercase transition-all inline-flex items-center gap-2 bg-[#051540] hover:bg-[#071D57] hover:-translate-y-0.5"
+              >
+                <LinkedinIcon className="w-4 h-4 text-[#FCF1D1]" />
+                <span>LINKEDIN</span>
+              </a>
+
+              <a
+                href="#contact"
+                className="px-5 py-3 border border-[#1C3670] hover:border-[#FCF1D1]/60 text-[#FCF1D1] font-mono text-xs tracking-wider uppercase transition-all inline-flex items-center gap-2 bg-[#051540] hover:bg-[#071D57] hover:-translate-y-0.5"
+              >
+                <Mail className="w-4 h-4 text-[#FCF1D1]" />
+                <span>CONTACT</span>
               </a>
             </div>
 
           </div>
 
-          {/* Right Column: Architectural Portrait Frame */}
+          {/* Right Column: Architectural Centered Portrait Frame */}
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative w-full max-w-sm sm:max-w-md">
               
-              <div className="relative rounded-2xl p-3 bg-[#051540] border border-[#1C3670] shadow-2xl">
+              <div className="relative rounded-2xl p-3 bg-[#051540] border border-[#1C3670] shadow-2xl telemetry-bracket">
                 
                 {/* Clean, Unobstructed Portrait Photo */}
                 <div className="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-[#000133] border border-[#1C3670]/60 group">
@@ -108,22 +110,22 @@ export default function Hero() {
                   />
 
                   {/* Corner Architectural Crosshairs */}
-                  <div className="absolute top-3 left-3 text-[#FCF1D1]/40 font-mono text-[10px] select-none">+</div>
-                  <div className="absolute top-3 right-3 text-[#FCF1D1]/40 font-mono text-[10px] select-none">+</div>
+                  <div className="absolute top-3 left-3 text-[#FCF1D1]/50 font-mono text-[10px] select-none">+</div>
+                  <div className="absolute top-3 right-3 text-[#FCF1D1]/50 font-mono text-[10px] select-none">+</div>
                 </div>
 
-                {/* Info & Caption Area Below Photo - Face remains 100% visible and unblocked */}
+                {/* Info & Caption Area Below Photo */}
                 <div className="mt-3.5 px-2 space-y-2">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h3 className="text-[#FCF1D1] font-semibold text-lg tracking-tight">
-                        Arya Patle
+                      <h3 className="text-[#FCF1D1] font-semibold text-lg tracking-tight font-mono">
+                        ARYA PATLE
                       </h3>
-                      <p className="text-xs text-[#FCF1D1]/75 font-light">
-                        Machine Learning & NLP Practitioner
+                      <p className="text-xs text-[#FCF1D1]/75 font-mono">
+                        ML &amp; NLP Practitioner
                       </p>
                     </div>
-                    <span className="flex items-center gap-1 text-[11px] font-mono text-[#FCF1D1] bg-[#000133] px-2.5 py-1 rounded-md border border-[#1C3670]">
+                    <span className="flex items-center gap-1 text-[11px] font-mono text-[#FCF1D1] bg-[#000133] px-2.5 py-1 rounded border border-[#1C3670]">
                       <MapPin className="w-3 h-3 text-[#FCF1D1]" />
                       India
                     </span>
@@ -132,22 +134,71 @@ export default function Hero() {
                   <div className="border-t border-[#1C3670]/50 pt-2.5 flex items-center justify-between text-xs text-[#FCF1D1]/70 font-mono">
                     <span className="flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#FCF1D1] inline-block" />
-                      <span>Open to Technical Roles</span>
+                      <span>OPEN TO TECHNICAL ROLES</span>
                     </span>
-                    <span className="text-[11px] text-[#FCF1D1]/55 font-medium">
-                      B.Tech CSE • Semester V
+                    <span className="text-[11px] text-[#FCF1D1]/60 font-medium">
+                      B.TECH CSE // SEM V
                     </span>
                   </div>
                 </div>
 
               </div>
 
-              {/* Decorative subtle border frame */}
-              <div className="absolute -bottom-2 -right-2 w-full h-full rounded-2xl border border-[#1C3670]/40 -z-10 pointer-events-none" />
             </div>
           </div>
 
         </div>
+
+        {/* 3 Telemetry Summary Brackets (Inspired by Sparsh Goswami's Telemetry Grid) */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 pt-12 mt-12 border-t border-[#1C3670]/60">
+          
+          <div className="p-5 bg-[#051540] border border-[#1C3670] telemetry-bracket hover:border-[#FCF1D1]/50 transition-colors">
+            <span className="font-mono text-[10px] tracking-wider text-[#FCF1D1] font-bold uppercase block">
+              01 // CORE FOCUS
+            </span>
+            <div className="text-2xl sm:text-3xl font-extrabold text-[#FCF1D1] font-mono mt-2">
+              ML &amp; NLP
+            </div>
+            <div className="text-xs font-bold font-mono text-[#FCF1D1]/90 uppercase mt-1">
+              TEXT &amp; FRAUD CLASSIFICATION
+            </div>
+            <p className="text-xs text-[#FCF1D1]/70 mt-2 font-sans leading-relaxed">
+              TF-IDF vectorization, Naive Bayes, Logistic Regression, and imbalanced anomaly detection.
+            </p>
+          </div>
+
+          <div className="p-5 bg-[#051540] border border-[#1C3670] telemetry-bracket hover:border-[#FCF1D1]/50 transition-colors">
+            <span className="font-mono text-[10px] tracking-wider text-[#FCF1D1] font-bold uppercase block">
+              02 // INDUSTRY EXPERIENCE
+            </span>
+            <div className="text-2xl sm:text-3xl font-extrabold text-[#FCF1D1] font-mono mt-2">
+              CODSOFT
+            </div>
+            <div className="text-xs font-bold font-mono text-[#FCF1D1]/90 uppercase mt-1">
+              MACHINE LEARNING INTERN
+            </div>
+            <p className="text-xs text-[#FCF1D1]/70 mt-2 font-sans leading-relaxed">
+              1-Month verified internship delivering preprocessing, model training, evaluation, and .pkl artifacts.
+            </p>
+          </div>
+
+          <div className="p-5 bg-[#051540] border border-[#1C3670] telemetry-bracket hover:border-[#FCF1D1]/50 transition-colors">
+            <span className="font-mono text-[10px] tracking-wider text-[#FCF1D1] font-bold uppercase block">
+              03 // ACADEMIC STANDING
+            </span>
+            <div className="text-2xl sm:text-3xl font-extrabold text-[#FCF1D1] font-mono mt-2">
+              5TH SEM
+            </div>
+            <div className="text-xs font-bold font-mono text-[#FCF1D1]/90 uppercase mt-1">
+              B.TECH CSE (SECTION B)
+            </div>
+            <p className="text-xs text-[#FCF1D1]/70 mt-2 font-sans leading-relaxed">
+              Algorithms, Database Management Systems, Operating Systems, and Compiler Design.
+            </p>
+          </div>
+
+        </div>
+
       </div>
     </section>
   );

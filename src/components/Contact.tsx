@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Mail, MessageSquare, ArrowUpRight, Send, Check, Copy, ExternalLink, Loader2, Sparkles, AlertCircle } from "lucide-react";
+import { Mail, MessageSquare, ArrowUpRight, Send, Check, Copy, ExternalLink, Loader2, Sparkles } from "lucide-react";
 import GithubIcon from "./GithubIcon";
 import LinkedinIcon from "./LinkedinIcon";
 import InstagramIcon from "./InstagramIcon";
@@ -59,7 +59,6 @@ export default function Contact() {
         setStatusMessage("Message delivered directly to Arya's inbox via Gmail SMTP!");
         setFormState({ name: "", email: "", subject: "", message: "" });
       } else if (data.needsConfig) {
-        // App password pending in .env.local, fall back to opening mail client
         setStatusMessage("Google App Password pending in .env.local. Opened mail draft as fallback!");
         window.location.href = `mailto:${recipientEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
         setIsSubmitted(true);
@@ -67,7 +66,6 @@ export default function Contact() {
         throw new Error(data.error || "Email delivery failed");
       }
     } catch {
-      // Fallback to direct mail client
       window.location.href = `mailto:${recipientEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
       setIsSubmitted(true);
       setStatusMessage("Opened your default mail app to send directly to aryapatle2704@gmail.com.");
@@ -92,36 +90,38 @@ export default function Contact() {
     <section id="contact" className="py-24 relative border-t border-[#1C3670]/40 bg-[#000133]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
+        {/* Section Header with Sparsh Accent */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
-            <div className="badge-pill mb-3">
-              <Mail className="w-3.5 h-3.5 text-[#FCF1D1]" />
-              <span>Gmail SMTP Mail Service</span>
+            <div className="flex items-center space-x-3 mb-2">
+              <span className="w-2 h-6 bg-[#FCF1D1]" />
+              <span className="font-mono text-xs tracking-widest text-[#FCF1D1] uppercase font-bold">
+                RADIO // DIRECT COMM
+              </span>
+              <span className="font-mono text-xs text-[#FCF1D1]/60 uppercase">
+                SMTP INBOX DISPATCH
+              </span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#FCF1D1]">
-              Contact & Direct Message
+              Get in Touch
             </h2>
-            <p className="text-[#FCF1D1]/65 mt-2 text-sm sm:text-base">
-              Send an inquiry directly to Arya&apos;s Gmail inbox with verified server delivery.
-            </p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start max-w-5xl mx-auto">
           
           {/* Left Column: Direct Profiles */}
-          <div className="lg:col-span-5 editorial-card rounded-2xl p-7 space-y-4">
+          <div className="lg:col-span-5 bg-[#051540] border border-[#1C3670] telemetry-bracket rounded-2xl p-7 space-y-4">
             <div>
-              <h3 className="text-lg font-semibold text-[#FCF1D1] mb-1">
+              <span className="text-[10px] font-mono uppercase text-[#FCF1D1]/60 tracking-wider block">
+                CHANNELS // VERIFIED
+              </span>
+              <h3 className="text-lg font-bold text-[#FCF1D1] mt-0.5">
                 Direct Contact Channels
               </h3>
-              <p className="text-xs text-[#FCF1D1]/65 leading-relaxed">
-                Connect via LinkedIn, send an email, explore my GitHub repositories, or visit my creative craft venture.
-              </p>
             </div>
 
-            <div className="space-y-2.5 pt-2">
+            <div className="space-y-2.5 pt-2 font-mono">
               {/* Email Card */}
               <div className="p-3.5 rounded-xl bg-[#000133] border border-[#1C3670] space-y-2">
                 <div className="flex items-center justify-between">
@@ -130,7 +130,7 @@ export default function Contact() {
                       <Mail className="w-4 h-4" />
                     </div>
                     <div>
-                      <span className="text-[11px] font-mono uppercase text-[#FCF1D1]/60 block">Email Address</span>
+                      <span className="text-[10px] font-mono uppercase text-[#FCF1D1]/60 block">GMAIL INBOX</span>
                       <a
                         href={`mailto:${recipientEmail}`}
                         className="text-xs font-semibold text-[#FCF1D1] hover:underline"
@@ -181,10 +181,10 @@ export default function Contact() {
                     <LinkedinIcon className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-sm font-semibold text-[#FCF1D1] block">
-                      LinkedIn Profile
+                    <span className="text-xs font-semibold text-[#FCF1D1] block">
+                      LINKEDIN PROFILE
                     </span>
-                    <span className="text-xs font-mono text-[#FCF1D1]/60">
+                    <span className="text-[11px] font-mono text-[#FCF1D1]/60">
                       arya-patle-273823320
                     </span>
                   </div>
@@ -204,10 +204,10 @@ export default function Contact() {
                     <GithubIcon className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-sm font-semibold text-[#FCF1D1] block">
-                      GitHub Repositories
+                    <span className="text-xs font-semibold text-[#FCF1D1] block">
+                      GITHUB REPOSITORIES
                     </span>
-                    <span className="text-xs font-mono text-[#FCF1D1]/60">
+                    <span className="text-[11px] font-mono text-[#FCF1D1]/60">
                       github.com/aryapatle123
                     </span>
                   </div>
@@ -228,10 +228,10 @@ export default function Contact() {
                       <InstagramIcon className="w-4 h-4" />
                     </div>
                     <div>
-                      <span className="text-sm font-semibold text-[#FCF1D1] block">
-                        bloomi_15 (Craft Venture)
+                      <span className="text-xs font-semibold text-[#FCF1D1] block">
+                        BLOOMI_15 (INSTAGRAM)
                       </span>
-                      <span className="text-xs font-mono text-[#FCF1D1]/60">
+                      <span className="text-[11px] font-mono text-[#FCF1D1]/60">
                         instagram.com/bloomii_15
                       </span>
                     </div>
@@ -243,24 +243,26 @@ export default function Contact() {
           </div>
 
           {/* Right Column: Inquiry Message Form */}
-          <div className="lg:col-span-7 editorial-card rounded-2xl p-7 sm:p-8">
-            <div className="flex items-center justify-between gap-2 mb-4">
+          <div className="lg:col-span-7 bg-[#051540] border border-[#1C3670] telemetry-bracket rounded-2xl p-7 sm:p-8">
+            <div className="flex items-center justify-between gap-2 mb-4 border-b border-[#1C3670]/60 pb-3">
               <div className="flex items-center gap-2">
                 <MessageSquare className="w-4 h-4 text-[#FCF1D1]" />
-                <h3 className="text-lg font-semibold text-[#FCF1D1]">
-                  Direct Message to Arya
+                <h3 className="text-base font-bold font-mono text-[#FCF1D1] uppercase">
+                  Direct Message Dispatch
                 </h3>
               </div>
-              <span className="text-[11px] font-mono text-[#FCF1D1]/65 bg-[#000133] px-2.5 py-1 rounded border border-[#1C3670] flex items-center gap-1.5">
+              <span className="text-[10px] font-mono text-[#FCF1D1]/70 bg-[#000133] px-2.5 py-1 rounded border border-[#1C3670] flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#FCF1D1] animate-pulse" />
-                <span>SMTP Mail Service</span>
+                <span>SMTP ACTIVE</span>
               </span>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="text-xs font-medium text-[#FCF1D1]/80 block mb-1">Your Name *</label>
+                  <label className="text-xs font-mono text-[#FCF1D1]/80 block mb-1 uppercase tracking-wider">
+                    Your Name *
+                  </label>
                   <input
                     type="text"
                     required
@@ -272,7 +274,9 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="text-xs font-medium text-[#FCF1D1]/80 block mb-1">Your Email *</label>
+                  <label className="text-xs font-mono text-[#FCF1D1]/80 block mb-1 uppercase tracking-wider">
+                    Your Email *
+                  </label>
                   <input
                     type="email"
                     required
@@ -285,7 +289,9 @@ export default function Contact() {
               </div>
 
               <div>
-                <label className="text-xs font-medium text-[#FCF1D1]/80 block mb-1">Subject</label>
+                <label className="text-xs font-mono text-[#FCF1D1]/80 block mb-1 uppercase tracking-wider">
+                  Subject
+                </label>
                 <input
                   type="text"
                   required
@@ -297,7 +303,9 @@ export default function Contact() {
               </div>
 
               <div>
-                <label className="text-xs font-medium text-[#FCF1D1]/80 block mb-1">Message *</label>
+                <label className="text-xs font-mono text-[#FCF1D1]/80 block mb-1 uppercase tracking-wider">
+                  Message *
+                </label>
                 <textarea
                   required
                   rows={4}
@@ -311,12 +319,12 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full inline-flex items-center justify-center gap-2 py-3 px-6 rounded-xl text-sm font-semibold text-[#000133] bg-[#FCF1D1] hover:bg-[#F5E6BD] shadow-md transition-all active:scale-[0.99] disabled:opacity-75 disabled:cursor-not-allowed"
+                className="w-full inline-flex items-center justify-center gap-2 py-3 px-6 rounded-xl text-xs font-mono uppercase tracking-wider font-bold text-[#000133] bg-[#FCF1D1] hover:bg-[#F5E6BD] shadow-md transition-all active:scale-[0.99] disabled:opacity-75 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin text-[#000133]" />
-                    <span>Sending via Mail Service...</span>
+                    <span>Sending via Gmail SMTP...</span>
                   </>
                 ) : isSubmitted ? (
                   <>
@@ -332,7 +340,7 @@ export default function Contact() {
               </button>
 
               {statusMessage && (
-                <div className="p-3 rounded-xl bg-[#000133] border border-[#1C3670] text-xs text-[#FCF1D1] flex items-center gap-2">
+                <div className="p-3 rounded-xl bg-[#000133] border border-[#1C3670] text-xs text-[#FCF1D1] flex items-center gap-2 font-mono">
                   <Sparkles className="w-4 h-4 text-[#FCF1D1] shrink-0" />
                   <span>{statusMessage}</span>
                 </div>
