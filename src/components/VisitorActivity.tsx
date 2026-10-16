@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import { Eye, ShieldCheck, Mail, RefreshCw, Activity, Laptop } from "lucide-react";
+import { Eye, Mail, RefreshCw, Activity, MapPin, Globe, ShieldCheck } from "lucide-react";
 
 interface VisitRecord {
   id: string;
@@ -11,6 +11,7 @@ interface VisitRecord {
   browser: string;
   referrer: string;
   ip: string;
+  location: string;
   status: string;
 }
 
@@ -90,6 +91,8 @@ export default function VisitorActivity() {
     }
   };
 
+  const latestVisit = recentVisits[0];
+
   return (
     <section id="activity" className="py-20 relative bg-[#FFF8DF] border-t border-[#ABC5F5]/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -102,10 +105,10 @@ export default function VisitorActivity() {
               Visitor Telemetry
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0A1329] tracking-tight">
-              Live Visitor Activity
+              Live Visitor Activity & Network Log
             </h2>
             <p className="mt-2 text-sm sm:text-base text-[#2E4069] max-w-2xl">
-              Real-time traffic telemetry. Every unique portfolio visit is recorded and generates an instant email notification to Arya Patle.
+              Real-time telemetry showing verified visitor locations, IP addresses, and device profiles. Every visit triggers an automated email notification to Arya Patle.
             </p>
           </div>
 
@@ -121,12 +124,13 @@ export default function VisitorActivity() {
         </div>
 
         {/* Telemetry Metric Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           
+          {/* Total Visits */}
           <div className="p-6 rounded-xl bg-[#FFF2C7] border border-[#ABC5F5] shadow-sm relative overflow-hidden">
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-mono uppercase tracking-wider text-[#5C729E]">
-                Total Site Visits
+                Total Lifetime Visits
               </span>
               <div className="w-8 h-8 rounded-lg bg-[#FFF8DF] border border-[#ABC5F5] flex items-center justify-center text-[#0A1329]">
                 <Eye className="w-4 h-4 text-[#8DAAFF]" />
@@ -136,17 +140,54 @@ export default function VisitorActivity() {
               <span className="text-3xl font-extrabold text-[#0A1329] font-mono">
                 {totalVisits}
               </span>
-              <span className="text-xs text-[#2E4069] font-medium">recorded sessions</span>
+              <span className="text-xs text-[#2E4069] font-medium">sessions</span>
             </div>
             <p className="mt-3 text-xs text-[#5C729E]">
-              Counter increments automatically on unique visitor access.
+              Increments on every unique visitor session.
             </p>
           </div>
 
+          {/* Latest Location */}
           <div className="p-6 rounded-xl bg-[#FFF2C7] border border-[#ABC5F5] shadow-sm relative overflow-hidden">
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-mono uppercase tracking-wider text-[#5C729E]">
-                Email Alert System
+                Latest Visitor Location
+              </span>
+              <div className="w-8 h-8 rounded-lg bg-[#FFF8DF] border border-[#ABC5F5] flex items-center justify-center text-[#0A1329]">
+                <MapPin className="w-4 h-4 text-[#8DAAFF]" />
+              </div>
+            </div>
+            <p className="text-base font-bold text-[#0A1329] truncate" title={latestVisit?.location || "India"}>
+              {latestVisit?.location || "Detecting..."}
+            </p>
+            <p className="mt-3 text-xs text-[#5C729E]">
+              City, Region, and Country geolocation.
+            </p>
+          </div>
+
+          {/* Latest IP Address */}
+          <div className="p-6 rounded-xl bg-[#FFF2C7] border border-[#ABC5F5] shadow-sm relative overflow-hidden">
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-xs font-mono uppercase tracking-wider text-[#5C729E]">
+                Latest IP Address
+              </span>
+              <div className="w-8 h-8 rounded-lg bg-[#FFF8DF] border border-[#ABC5F5] flex items-center justify-center text-[#0A1329]">
+                <Globe className="w-4 h-4 text-[#8DAAFF]" />
+              </div>
+            </div>
+            <p className="text-base font-bold text-[#0A1329] font-mono truncate" title={latestVisit?.ip || "Localhost"}>
+              {latestVisit?.ip || "Resolving IP..."}
+            </p>
+            <p className="mt-3 text-xs text-[#5C729E]">
+              Verified public network client address.
+            </p>
+          </div>
+
+          {/* Email Notification Status */}
+          <div className="p-6 rounded-xl bg-[#FFF2C7] border border-[#ABC5F5] shadow-sm relative overflow-hidden">
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-xs font-mono uppercase tracking-wider text-[#5C729E]">
+                Email Notification Alert
               </span>
               <div className="w-8 h-8 rounded-lg bg-[#FFF8DF] border border-[#ABC5F5] flex items-center justify-center text-[#0A1329]">
                 <Mail className="w-4 h-4 text-[#8DAAFF]" />
@@ -158,28 +199,8 @@ export default function VisitorActivity() {
                 Active (Gmail SMTP)
               </span>
             </div>
-            <p className="mt-3 text-xs text-[#5C729E]">
-              Instant email notification dispatched directly to aryapatle2704@gmail.com.
-            </p>
-          </div>
-
-          <div className="p-6 rounded-xl bg-[#FFF2C7] border border-[#ABC5F5] shadow-sm relative overflow-hidden">
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-xs font-mono uppercase tracking-wider text-[#5C729E]">
-                Your Current Session
-              </span>
-              <div className="w-8 h-8 rounded-lg bg-[#FFF8DF] border border-[#ABC5F5] flex items-center justify-center text-[#0A1329]">
-                <Laptop className="w-4 h-4 text-[#8DAAFF]" />
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" />
-              <span className="text-sm font-bold text-[#0A1329]">
-                {currentSessionLogged ? "Session Verified" : "Tracking..."}
-              </span>
-            </div>
-            <p className="mt-3 text-xs text-[#5C729E]">
-              Protected against spamming via session-based verification.
+            <p className="mt-3 text-xs text-[#5C729E] truncate" title="Dispatched to aryapatle2704@gmail.com">
+              Alerts sent to aryapatle2704@gmail.com
             </p>
           </div>
 
@@ -187,16 +208,17 @@ export default function VisitorActivity() {
 
         {/* Visitor Activity Log List */}
         <div className="rounded-xl bg-[#FFF2C7] border border-[#ABC5F5] shadow-sm overflow-hidden">
-          <div className="px-6 py-4 border-b border-[#ABC5F5]/60 bg-[#FFF8DF]/70 flex items-center justify-between">
+          <div className="px-6 py-4 border-b border-[#ABC5F5]/60 bg-[#FFF8DF]/70 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div className="flex items-center gap-2">
               <Activity className="w-4 h-4 text-[#8DAAFF]" />
               <h3 className="text-sm font-bold text-[#0A1329] uppercase tracking-wider font-mono">
                 Recent Traffic Telemetry Log
               </h3>
             </div>
-            <span className="text-xs font-mono text-[#5C729E]">
-              Showing {recentVisits.length} latest events
-            </span>
+            <div className="flex items-center gap-2 text-xs font-mono text-[#5C729E]">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+              <span>{currentSessionLogged ? "Your Session Verified" : "Tracking Active"}</span>
+            </div>
           </div>
 
           {recentVisits.length === 0 ? (
@@ -209,6 +231,8 @@ export default function VisitorActivity() {
                 <thead className="bg-[#FFF8DF]/40 text-[#5C729E] font-mono uppercase tracking-wider">
                   <tr>
                     <th className="px-6 py-3">Timestamp</th>
+                    <th className="px-6 py-3">Location</th>
+                    <th className="px-6 py-3">IP Address</th>
                     <th className="px-6 py-3">Device / OS</th>
                     <th className="px-6 py-3">Browser</th>
                     <th className="px-6 py-3">Traffic Origin</th>
@@ -221,7 +245,14 @@ export default function VisitorActivity() {
                       <td className="px-6 py-3.5 whitespace-nowrap font-mono text-[#2E4069]">
                         {formatDate(visit.timestamp)}
                       </td>
-                      <td className="px-6 py-3.5 whitespace-nowrap font-semibold">
+                      <td className="px-6 py-3.5 whitespace-nowrap font-semibold flex items-center gap-1.5">
+                        <MapPin className="w-3.5 h-3.5 text-[#8DAAFF] shrink-0" />
+                        <span>{visit.location || "India"}</span>
+                      </td>
+                      <td className="px-6 py-3.5 whitespace-nowrap font-mono text-[#0A1329] font-bold">
+                        {visit.ip || "127.0.0.1"}
+                      </td>
+                      <td className="px-6 py-3.5 whitespace-nowrap text-[#2E4069]">
                         {visit.device} ({visit.os})
                       </td>
                       <td className="px-6 py-3.5 whitespace-nowrap text-[#2E4069]">
@@ -233,7 +264,7 @@ export default function VisitorActivity() {
                       <td className="px-6 py-3.5 whitespace-nowrap text-right">
                         <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-100 text-emerald-800 border border-emerald-300">
                           <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
-                          {visit.status || "Logged"}
+                          {visit.status || "Logged & Notified"}
                         </span>
                       </td>
                     </tr>

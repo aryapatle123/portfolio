@@ -1,7 +1,17 @@
 {
-  "totalVisits": 1,
-  "lastUpdated": "2026-10-16T14:15:00.000Z",
+  "totalVisits": 2,
+  "lastUpdated": "2026-10-16T08:54:00.094Z",
   "recentVisits": [
+    {
+      "id": "visit-1792140840146-607",
+      "timestamp": "2026-10-16T08:54:00.094Z",
+      "device": "Desktop",
+      "os": "Windows",
+      "browser": "Web Browser",
+      "referrer": "Direct Search",
+      "ip": "1",
+      "status": "Logged & Notified"
+    },
     {
       "id": "init-1",
       "timestamp": "2026-10-16T14:15:00.000Z",

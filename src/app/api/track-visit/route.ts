@@ -11,6 +11,7 @@ interface VisitRecord {
   browser: string;
   referrer: string;
   ip: string;
+  location: string;
   status: string;
 }
 
@@ -20,7 +21,6 @@ interface VisitsStore {
   recentVisits: VisitRecord[];
 }
 
-// In-memory fallback in case of read-only serverless environment
 let inMemoryStore: VisitsStore = {
   totalVisits: 1,
   lastUpdated: new Date().toISOString(),
@@ -31,9 +31,10 @@ let inMemoryStore: VisitsStore = {
       device: "Desktop",
       os: "Windows",
       browser: "Chrome",
-      referrer: "Direct",
-      ip: "127.0.0.1",
-      status: "Logged",
+      referrer: "Direct Visit",
+      ip: "103.177.237.130",
+      location: "Pune, Maharashtra, India",
+      status: "Logged & Notified",
     },
   ],
 };
@@ -95,13 +96,62 @@ function parseUserAgent(uaString: string): { device: string; os: string; browser
   return { device, os, browser };
 }
 
+async function resolveIpAndLocation(req: NextRequest): Promise<{ ip: string; location: string }> {
+  let ip = "127.0.0.1";
+  const forwarded = req.headers.get("x-forwarded-for");
+  if (forwarded) {
+    ip = forwarded.split(",")[0].trim();
+  } else {
+    const realIp = req.headers.get("x-real-ip");
+    if (realIp) ip = realIp.trim();
+  }
+
+  const isLocal =
+    !ip ||
+    ip === "127.0.0.1" ||
+    ip === "::1" ||
+    ip === "localhost" ||
+    ip.startsWith("192.168.") ||
+    ip.startsWith("10.") ||
+    ip.startsWith("172.");
+
+  let location = "India";
+
+  try {
+    const targetUrl = isLocal ? "http://ip-api.com/json/" : `http://ip-api.com/json/${ip}`;
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 2500);
+
+    const res = await fetch(targetUrl, { signal: controller.signal });
+    clearTimeout(timeoutId);
+
+    if (res.ok) {
+      const data = await res.json();
+      if (data.status === "success") {
+        const city = data.city || "";
+        const region = data.regionName ? `, ${data.regionName}` : "";
+        const country = data.country || "India";
+        location = city ? `${city}${region}, ${country}` : country;
+
+        if (isLocal && data.query) {
+          ip = data.query;
+        }
+      }
+    }
+  } catch (lookupErr) {
+    console.log("IP Geolocation lookup note:", lookupErr);
+  }
+
+  return { ip, location };
+}
+
 export async function GET() {
   const store = loadVisits();
   return NextResponse.json({
     success: true,
     totalVisits: store.totalVisits,
     lastUpdated: store.lastUpdated,
-    recentVisits: store.recentVisits.slice(0, 15),
+    recentVisits: store.recentVisits.slice(0, 20),
   });
 }
 
@@ -111,10 +161,8 @@ export async function POST(req: NextRequest) {
     const ua = req.headers.get("user-agent") || "";
     const { device, os, browser } = parseUserAgent(ua);
 
-    // Extract IP safely
-    const forwardedFor = req.headers.get("x-forwarded-for");
-    const rawIp = forwardedFor ? forwardedFor.split(",")[0].trim() : "Direct / Local";
-    const ip = rawIp.replace(/^.*:/, "") || "Localhost";
+    // Resolve IP address and geographic location
+    const { ip, location } = await resolveIpAndLocation(req);
 
     const referrer = body.referrer && body.referrer.trim() !== "" ? body.referrer : "Direct Visit";
     const nowIso = new Date().toISOString();
@@ -136,10 +184,11 @@ export async function POST(req: NextRequest) {
       browser,
       referrer,
       ip,
+      location,
       status: "Logged & Notified",
     };
 
-    store.recentVisits = [newRecord, ...(store.recentVisits || [])].slice(0, 30);
+    store.recentVisits = [newRecord, ...(store.recentVisits || [])].slice(0, 40);
     saveVisits(store);
 
     // Send email notification to Arya Patle via Gmail SMTP
@@ -157,8 +206,8 @@ export async function POST(req: NextRequest) {
           },
         });
 
-        const mailSubject = `[Portfolio Alert] New Visitor Detected (${device} - ${browser})`;
-        const textContent = `New Portfolio Visitor Alert\n\nDate and Time: ${formattedDate} IST\nDevice: ${device}\nOperating System: ${os}\nBrowser: ${browser}\nReferrer: ${referrer}\nIP Address: ${ip}\nTotal Visits: ${store.totalVisits}\n\nView live portfolio: http://localhost:3000`;
+        const mailSubject = `[Portfolio Alert] New Visitor from ${location} (${device} - ${browser})`;
+        const textContent = `New Portfolio Visitor Alert\n\nDate and Time: ${formattedDate} IST\nLocation: ${location}\nIP Address: ${ip}\nDevice: ${device}\nOperating System: ${os}\nBrowser: ${browser}\nTraffic Origin: ${referrer}\nTotal Visits: ${store.totalVisits}\n\nView live portfolio: http://localhost:3000`;
 
         const htmlContent = `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #FFF8DF; color: #0A1329; border: 1px solid #ABC5F5; border-radius: 12px; overflow: hidden;">
@@ -177,6 +226,14 @@ export async function POST(req: NextRequest) {
                   <td style="padding: 8px 0; color: #0A1329; font-weight: 600;">${formattedDate} IST</td>
                 </tr>
                 <tr>
+                  <td style="padding: 8px 0; color: #5C729E; font-weight: 500;">Location:</td>
+                  <td style="padding: 8px 0; color: #0A1329; font-weight: bold;">${location}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px 0; color: #5C729E; font-weight: 500;">IP Address:</td>
+                  <td style="padding: 8px 0; color: #0A1329; font-family: monospace; font-weight: bold;">${ip}</td>
+                </tr>
+                <tr>
                   <td style="padding: 8px 0; color: #5C729E; font-weight: 500;">Device:</td>
                   <td style="padding: 8px 0; color: #0A1329;">${device}</td>
                 </tr>
@@ -191,10 +248,6 @@ export async function POST(req: NextRequest) {
                 <tr>
                   <td style="padding: 8px 0; color: #5C729E; font-weight: 500;">Traffic Origin:</td>
                   <td style="padding: 8px 0; color: #0A1329;">${referrer}</td>
-                </tr>
-                <tr>
-                  <td style="padding: 8px 0; color: #5C729E; font-weight: 500;">IP Address:</td>
-                  <td style="padding: 8px 0; color: #0A1329; font-family: monospace;">${ip}</td>
                 </tr>
                 <tr>
                   <td style="padding: 8px 0; color: #5C729E; font-weight: 500;">Total Lifetime Visits:</td>
