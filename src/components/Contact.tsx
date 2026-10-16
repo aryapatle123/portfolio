@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Mail, MessageSquare, ArrowUpRight, Send, Check, Copy, ExternalLink, Loader2 } from "lucide-react";
+import { Mail, MessageSquare, ArrowUpRight, Send, Check, Copy, ExternalLink, Loader2, Sparkles, AlertCircle } from "lucide-react";
 import GithubIcon from "./GithubIcon";
 import LinkedinIcon from "./LinkedinIcon";
 import InstagramIcon from "./InstagramIcon";
@@ -17,6 +17,7 @@ export default function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(PORTFOLIO_DATA.socials.email);
@@ -31,45 +32,51 @@ export default function Contact() {
     if (!formState.name.trim() || !formState.email.trim() || !formState.message.trim()) return;
 
     setIsSubmitting(true);
+    setStatusMessage(null);
 
     const emailSubject = `[Portfolio Inquiry] ${formState.subject || "Collaboration"} from ${formState.name}`;
     const emailBody = `Sender Name: ${formState.name}\nSender Email: ${formState.email}\nSubject: ${formState.subject}\n\nMessage:\n${formState.message}`;
 
     try {
-      // 1. Direct submission via FormSubmit AJAX to deliver directly to aryapatle2704@gmail.com
-      const res = await fetch(`https://formsubmit.co/ajax/${recipientEmail}`, {
+      // Send through dedicated Gmail SMTP Next.js API route
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
         },
         body: JSON.stringify({
           name: formState.name,
           email: formState.email,
-          _subject: emailSubject,
+          subject: formState.subject,
           message: formState.message,
-          _template: "table",
-          _captcha: "false"
         }),
       });
 
       const data = await res.json();
-      if (!res.ok || data.success === "false") {
-        // Fallback to mail client if automated service requests browser client
-        const mailtoFallback = `mailto:${recipientEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-        window.location.href = mailtoFallback;
+
+      if (res.ok && data.success) {
+        setIsSubmitted(true);
+        setStatusMessage("Message delivered directly to Arya's inbox via Gmail SMTP!");
+        setFormState({ name: "", email: "", subject: "", message: "" });
+      } else if (data.needsConfig) {
+        // App password pending in .env.local, fall back to opening mail client
+        setStatusMessage("Google App Password pending in .env.local. Opened mail draft as fallback!");
+        window.location.href = `mailto:${recipientEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+        setIsSubmitted(true);
+      } else {
+        throw new Error(data.error || "Email delivery failed");
       }
     } catch {
-      // Offline or network error fallback
-      const mailtoFallback = `mailto:${recipientEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-      window.location.href = mailtoFallback;
+      // Fallback to direct mail client
+      window.location.href = `mailto:${recipientEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+      setIsSubmitted(true);
+      setStatusMessage("Opened your default mail app to send directly to aryapatle2704@gmail.com.");
     } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
       setTimeout(() => {
         setIsSubmitted(false);
-        setFormState({ name: "", email: "", subject: "", message: "" });
-      }, 6000);
+        setStatusMessage(null);
+      }, 7000);
     }
   };
 
@@ -90,20 +97,20 @@ export default function Contact() {
           <div>
             <div className="badge-pill mb-3">
               <Mail className="w-3.5 h-3.5 text-[#FCF1D1]" />
-              <span>Get in Touch</span>
+              <span>Gmail SMTP Mail Service</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#FCF1D1]">
-              Contact & Connections
+              Contact & Direct Message
             </h2>
             <p className="text-[#FCF1D1]/65 mt-2 text-sm sm:text-base">
-              Verified communication channels, professional profiles, and direct email delivery.
+              Send an inquiry directly to Arya&apos;s Gmail inbox with verified server delivery.
             </p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start max-w-5xl mx-auto">
           
-          {/* Left Column: Verified Profiles */}
+          {/* Left Column: Direct Profiles */}
           <div className="lg:col-span-5 editorial-card rounded-2xl p-7 space-y-4">
             <div>
               <h3 className="text-lg font-semibold text-[#FCF1D1] mb-1">
@@ -244,8 +251,9 @@ export default function Contact() {
                   Direct Message to Arya
                 </h3>
               </div>
-              <span className="text-[11px] font-mono text-[#FCF1D1]/60 bg-[#000133] px-2.5 py-1 rounded border border-[#1C3670]">
-                Delivered to {recipientEmail}
+              <span className="text-[11px] font-mono text-[#FCF1D1]/65 bg-[#000133] px-2.5 py-1 rounded border border-[#1C3670] flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FCF1D1] animate-pulse" />
+                <span>SMTP Mail Service</span>
               </span>
             </div>
 
@@ -308,30 +316,37 @@ export default function Contact() {
                 {isSubmitting ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin text-[#000133]" />
-                    <span>Delivering Directly to Inbox...</span>
+                    <span>Sending via Mail Service...</span>
                   </>
                 ) : isSubmitted ? (
                   <>
                     <Check className="w-4 h-4 text-[#000133]" />
-                    <span>Direct Mail Dispatched to {recipientEmail}!</span>
+                    <span>Dispatched to {recipientEmail}</span>
                   </>
                 ) : (
                   <>
                     <Send className="w-4 h-4 text-[#000133]" />
-                    <span>Send Direct Mail</span>
+                    <span>Send Message via Mail Service</span>
                   </>
                 )}
               </button>
 
+              {statusMessage && (
+                <div className="p-3 rounded-xl bg-[#000133] border border-[#1C3670] text-xs text-[#FCF1D1] flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-[#FCF1D1] shrink-0" />
+                  <span>{statusMessage}</span>
+                </div>
+              )}
+
               <div className="flex items-center justify-between text-[11px] text-[#FCF1D1]/55 pt-1 font-mono">
-                <span>Sends message directly to aryapatle2704@gmail.com</span>
+                <span>Direct delivery to aryapatle2704@gmail.com</span>
                 <a
                   href={gmailComposeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#FCF1D1]/75 hover:text-[#FCF1D1] underline inline-flex items-center gap-1"
                 >
-                  <span>Compose in Gmail</span>
+                  <span>Compose in Gmail Web</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </div>
