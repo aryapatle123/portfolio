@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
     }
 
     const gmailUser = process.env.GMAIL_USER || "aryapatle2704@gmail.com";
-    const gmailPass = process.env.GMAIL_APP_PASSWORD;
+    const gmailPass = process.env.GMAIL_APP_PASSWORD?.replace(/\s+/g, "");
 
     if (!gmailPass) {
       return NextResponse.json(
