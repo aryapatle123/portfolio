@@ -45,10 +45,7 @@ export default function Hero() {
               </p>
             </div>
 
-            {/* Concise, Authoritative Executive Summary */}
-            <p className="text-base sm:text-lg text-[#FCF1D1]/80 max-w-2xl leading-relaxed font-sans">
-              5th Semester Computer Science student building applied machine learning systems, natural language processing models, and data-driven software. Practical experience across text classification pipelines, imbalanced fraud detection, and model evaluation.
-            </p>
+
 
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-3 pt-2">

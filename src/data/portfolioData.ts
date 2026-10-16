@@ -48,7 +48,7 @@ export const PORTFOLIO_DATA = {
     role: "Computer Science Student & Machine Learning Enthusiast",
     headline: "Building Intelligent Solutions with Python & Machine Learning",
     subheadline:
-      "Computer Science student exploring machine learning, natural language processing, and practical software development with a focus on text classification, fraud detection, and algorithmic problem-solving.",
+      "Machine Learning & NLP Practitioner",
     bio: [
       "I am a Computer Science and Engineering student with hands-on project experience in machine learning, text classification, natural language processing, and fraud detection.",
       "My work focuses on Python-based data processing, feature extraction, model training, and performance evaluation through academic coursework, internship projects, and independent experimentation.",
