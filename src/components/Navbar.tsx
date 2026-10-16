@@ -18,6 +18,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: "EXPERIENCE", href: "#experience" },
   { label: "BLOOMI", href: "#entrepreneurship" },
   { label: "EDUCATION", href: "#education" },
+  { label: "ACTIVITY", href: "#activity" },
   { label: "CONTACT", href: "#contact" },
 ];
 
@@ -30,7 +31,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40);
 
-      const sections = ["about", "projects", "skills", "experience", "entrepreneurship", "education", "contact"];
+      const sections = ["about", "projects", "skills", "experience", "entrepreneurship", "education", "activity", "contact"];
       const scrollPosition = window.scrollY + 200;
 
       for (const sectionId of sections) {

@@ -41,6 +41,7 @@ export default function Footer() {
             <a href="#skills" className="hover:text-[#0A1329] hover:underline underline-offset-4 transition-colors">Skills</a>
             <a href="#experience" className="hover:text-[#0A1329] hover:underline underline-offset-4 transition-colors">Experience</a>
             <a href="#education" className="hover:text-[#0A1329] hover:underline underline-offset-4 transition-colors">Education</a>
+            <a href="#activity" className="hover:text-[#0A1329] hover:underline underline-offset-4 transition-colors">Activity</a>
             <a href="#contact" className="hover:text-[#0A1329] hover:underline underline-offset-4 transition-colors">Contact</a>
           </div>
 

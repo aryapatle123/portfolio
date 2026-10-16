@@ -1,0 +1,16 @@
+{
+  "totalVisits": 1,
+  "lastUpdated": "2026-10-16T14:15:00.000Z",
+  "recentVisits": [
+    {
+      "id": "init-1",
+      "timestamp": "2026-10-16T14:15:00.000Z",
+      "device": "Desktop",
+      "os": "Windows",
+      "browser": "Chrome",
+      "referrer": "Direct",
+      "ip": "Local Verified Session",
+      "status": "Logged"
+    }
+  ]
+}

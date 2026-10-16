@@ -6,12 +6,13 @@ import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
 import Education from "@/components/Education";
 import Entrepreneurship from "@/components/Entrepreneurship";
+import VisitorActivity from "@/components/VisitorActivity";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#000133] text-[#FCF1D1] flex flex-col selection:bg-[#1C3670] selection:text-[#FCF1D1]">
+    <div className="min-h-screen bg-[#FFF8DF] text-[#0A1329] flex flex-col selection:bg-[#ABC5F5] selection:text-[#0A1329]">
       <Navbar />
       <main className="flex-1">
         <Hero />
@@ -21,6 +22,7 @@ export default function Home() {
         <Experience />
         <Education />
         <Entrepreneurship />
+        <VisitorActivity />
         <Contact />
       </main>
       <Footer />
